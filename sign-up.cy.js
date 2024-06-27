@@ -1,7 +1,11 @@
 describe('sign up flying cape', () => {
-    it('sign up berhasil', () => {
-      cy.visit('http://127.0.0.1:8000/') // mengunjungi web home page
+    beforeEach(() => {
+      cy.exec('cd C:/xampp/htdocs/FlyingCape-Refreshv2-API-master/FlyingCape-Refreshv2-API && php artisan testseed')
+      cy.visit('http://127.0.0.1:8000/') // mengunjungi web home flying cape
       cy.contains('Home').should('be.visible') // mencari elemen yang berisi teks "Home" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+    })
+
+    it('sign up berhasil', () => {
       cy.get('button[data-modal-target="authentication-modal-signup"]').click() // klik tombol Sign Up
       cy.get('#authentication-modal-signup > .max-w-lg > .shadow > :nth-child(2) > .space-y-6 > .mb-5 > #floating_email').type('rinaseptiani@gmail.com') // input Email "rinaseptiani@gmail.com"
       cy.get('#first_name').type('Rina') // input First Name "Rina"
@@ -18,8 +22,6 @@ describe('sign up flying cape', () => {
     })
 
     it('sign up gagal', () => {
-      cy.visit('http://127.0.0.1:8000/') // mengunjungi web home page
-      cy.contains('Home').should('be.visible') // mencari elemen yang berisi teks "Home" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.get('button[data-modal-target="authentication-modal-signup"]').click() // klik tombol Sign Up
       cy.get('#authentication-modal-signup > .max-w-lg > .shadow > :nth-child(2) > .space-y-6 > .mb-5 > #floating_email').type('rinaseptiani@gmail.com') // input Email "rinaseptiani@gmail.com"
       cy.get('#first_name').type('Rina') // input First Name "Rina"
