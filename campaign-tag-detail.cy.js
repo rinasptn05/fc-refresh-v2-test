@@ -1,6 +1,6 @@
 describe('campaign tag detail', () => {
   beforeEach(() => {
-    cy.exec('cd C:/xampp/htdocs/FlyingCape-Refreshv2-API-master/FlyingCape-Refreshv2-API && php artisan testseed')
+    cy.exec('cd C:/xampp/htdocs/FlyingCape-Refreshv2-API-master/FlyingCape-Refreshv2-API-master && php artisan testseed')
     cy.visit('http://127.0.0.1:8000/admin') // mengunjungi web admin
     cy.get('input[type=email]').type('admin@gmail.com') // input email "admin@gmail.com"
     cy.get('input[type=password]').type('admin123') // input password "admin123"
@@ -42,7 +42,7 @@ describe('campaign tag detail', () => {
     cy.contains('Details').should('be.visible') // mencari elemen yang berisi teks "Details" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
     cy.get('.fi-ta-actions > .fi-link').click() // klik tombol Edit
     cy.contains('Edit').should('be.visible') // mencari elemen yang berisi teks "Edit" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
-    cy.get('textarea[id="data.description"]').clear().type('Campaign Tag Name : Promotion 2') // ubah Deskripsi dari "Campaign Tag : Promotion 2" menjadi "Campaign Tag Name : Promotion 2"
+    cy.get('textarea[id="data.description"]').clear().type('Campaign Tag Name : Promotion 2') // ubah Deskripsi dari "Campaign Tag : Promotion" menjadi "Campaign Tag Name : Promotion 2"
     cy.get('.fi-form-actions > .fi-ac > .fi-color-custom').click() // klik tombol Save changes
     cy.wait(5000) // menunggu selama 5 detik
 

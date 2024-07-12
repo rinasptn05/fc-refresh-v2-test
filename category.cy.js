@@ -1,6 +1,6 @@
 describe('category', () => {
     beforeEach(() => {
-      cy.exec('cd C:/xampp/htdocs/FlyingCape-Refreshv2-API-master/FlyingCape-Refreshv2-API && php artisan testseed')
+      cy.exec('cd C:/xampp/htdocs/FlyingCape-Refreshv2-API-master/FlyingCape-Refreshv2-API-master && php artisan testseed')
       cy.visit('http://127.0.0.1:8000/admin') // mengunjungi web admin
       cy.get('input[type=email]').type('admin@gmail.com') // input email "admin@gmail.com"
       cy.get('input[type=password]').type('admin123') // input password "admin123"
@@ -90,7 +90,7 @@ describe('category', () => {
       cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm
       cy.wait(5000) // menunggu selama 5 detik
 
-      // delete class master main category (tidak bisa delete)
+      // delete class master main category
       cy.get('.fi-header > .fi-ac > .fi-btn').click() // klik tombol Delete
       cy.wait(10000) // menunggu selama 10 detik
       cy.contains('Delete').should('be.visible') // mencari elemen yang berisi teks "Delete" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
