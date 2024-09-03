@@ -11,7 +11,7 @@ describe('sign up flying cape', () => {
       cy.get('#first_name').type('Rina') // input First Name "Rina"
       cy.get('#last_name').type('Septiani') // input Last Name "Septiani"
       cy.get('#password').type('123Rina_') // input Password "123Rina_"
-      cy.get('#confirm_password').type('123Rina_') // input Confirm Password "123Rina"
+      cy.get('#confirm_password').type('123Rina_') // input Confirm Password "123Rina_"
       cy.get('#mobile_number').type('085712345678') // input Mobile Number "085712345678"
       cy.get('#postal_code').type('46642') // input Postal Code "46642"
       cy.get('#inline-2-radio').click() // pilih Gender "Female"

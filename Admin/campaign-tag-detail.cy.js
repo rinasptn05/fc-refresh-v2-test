@@ -5,7 +5,7 @@ describe('campaign tag detail', () => {
     cy.get('input[type=email]').type('admin@gmail.com') // input email "admin@gmail.com"
     cy.get('input[type=password]').type('admin123') // input password "admin123"
     cy.get('.fi-btn').click() // klik tombol Sign in
-    cy.contains('Dashboard', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Dashboard" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna, menentukan bahwa Cypress harus menunggu hingga 10.000 milidetik (10 detik) agar elemen dengan teks 'Dashboard' muncul
+    cy.contains('Dashboard', { timeout: 10000 }).should('be.visible') // mencari elemen yang berisi teks "Dashboard" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna, menentukan bahwa Cypress harus menunggu hingga 10.000 milidetik (10 detik) agar elemen dengan teks 'Dashboard' muncul
   })
 
   it('daftar class master campaign tag details', () => {
@@ -32,8 +32,12 @@ describe('campaign tag detail', () => {
     
     cy.get('select[id="data.campaign_tag_id"]').select('Promotion') // pilih Campaign Tag "Promotion"
     cy.get('textarea[id="data.description"]').type('Campaign Tag : Promotion') // isi Deskripsi "Campaign Tag : Promotion"
+
+    // const filePath = 'campaign.JPG' // Path relatif dari file di dalam folder fixtures
+    // cy.get('input[type="file"]').attachFile(filePath) // Pilih input file / klik Browse dan lampirkan file
+    // cy.wait(30000) // menunggu selama 30 detik
     cy.get('.filepond--label-action', { timeout: 10000 }).should('be.visible').click() // klik tombol Browse
-    cy.get('select[id="data.status"').select('Active') // pilih Status "Active"
+    cy.get('select[id="data.status"]').select('Active') // pilih Status "Active"
     cy.get('.fi-color-custom').click() // klik tombol Create
     cy.wait(5000) // menunggu selama 5 detik
 
