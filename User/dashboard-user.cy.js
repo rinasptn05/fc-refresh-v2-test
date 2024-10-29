@@ -1,6 +1,6 @@
 describe('dashboard user', () => {
     beforeEach(() => {
-        cy.exec('cd C:/xampp/htdocs/FlyingCape-Refreshv2-API-master/FlyingCape-Refreshv2-API-master && php artisan testseed')
+        cy.exec('cd C:/xampp/htdocs/FlyingCape-Refreshv2-API && php artisan testseed')
         cy.visit('http://127.0.0.1:8000/') // mengunjungi web home flying cape
         cy.get('.space-x-4 > .gap-5 > :nth-child(3)').click() // klik tombol Log In
         cy.get('[x-show="login"] > :nth-child(1) > .fixed > .max-w-lg > :nth-child(1) > :nth-child(2) > .p-4 > .space-y-6 > :nth-child(1) > #floating_email').type('customer@gmail.com') // input Email "customer@gmail.com"
