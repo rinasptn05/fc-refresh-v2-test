@@ -12,22 +12,24 @@ describe('transaction reports', () => {
         // Query INSERT untuk menambahkan data ke tabel 'books'
         const queryBooks = `INSERT INTO books (book_ref_no, child_id, package_id, class_id, created_at, updated_at, class_schedule_id) VALUES ('FLCP000001', '1', '1', '1', '2024-10-25', '2024-10-25', '1')`
 
-        // Memanggil task Cypress bernama queryDatabase yang menjalankan query SQL di database
+        // Memanggil cy.task dengan parameter 'queryDatabase' dan queryBooks untuk menjalankan perintah SQL INSERT INTO books ke database
+        // Hasil eksekusi disimpan dalam variabel resultBooks
         cy.task('queryDatabase', queryBooks).then((resultBooks) => {
   
-        // Mengecek berapa banyak baris yang terpengaruh oleh query (dalam hal ini, 1 baris harus ditambahkan)
-        expect(resultBooks.affectedRows).to.equal(1);
+        // Memastikan bahwa satu baris data berhasil ditambahkan dengan memeriksa properti affectedRows dari resultBooks agar bernilai 1
+        expect(resultBooks.affectedRows).to.equal(1)
 
-        // Jika query pertama berhasil, ambil id dari hasil insert untuk digunakan di query berikutnya
-        const insertedBookId = resultBooks.insertId;
+        // Menyimpan insertId dari resultBooks (ID dari data books yang baru dimasukkan) ke dalam variabel insertedBookId
+        const insertedBookId = resultBooks.insertId
 
         // Query INSERT untuk menambahkan data ke tabel 'transaction_reports' dengan foreign key dari tabel 'books'
         const queryTransactionReports = `INSERT INTO transaction_reports (id, book_id, amount, used_balance, used_credit, amount_paid, transaction_id, mgs_amount, payment_mode, source, created_at, updated_at) VALUES ('1', '${insertedBookId}', '100', '100', '0', '100', 'FCT13208082', '0', 'mastercard', 'FC', '2024-10-25', '2024-10-25')`
 
-        // Memanggil task Cypress lagi untuk query ke tabel 'transaction_reports'
+        // Memanggil cy.task dengan queryDatabase dan queryTransactionReports untuk menjalankan perintah INSERT INTO transaction_reports
+        // Hasilnya disimpan dalam variabel resultTransactionReports
         cy.task('queryDatabase', queryTransactionReports).then((resultTransactionReports) => {
 
-        // Mengecek bahwa 1 baris telah dimasukkan ke tabel 'transaction_reports'
+        // Memastikan satu baris data berhasil ditambahkan ke transaction_reports dengan memeriksa affectedRows pada resultTransactionReports agar bernilai 1
         expect(resultTransactionReports.affectedRows).to.equal(1)
     })
 })
