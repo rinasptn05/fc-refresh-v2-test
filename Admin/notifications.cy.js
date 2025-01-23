@@ -28,7 +28,7 @@ describe('notifications', () => {
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('textarea[id="data.message"]').type('Testing') // input Notification Message "Testing"
         cy.get('.fi-color-custom').click() // klik tombol Create
-        cy.wait(30000) // menunggu selama 30 detik
+        cy.wait(10000) // menunggu selama 10 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Notifications
         cy.wait(10000) // menunggu selama 10 detik
         cy.contains('Table').should('be.visible') // mencari elemen yang berisi teks "Table" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna

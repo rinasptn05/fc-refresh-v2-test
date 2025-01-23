@@ -9,13 +9,13 @@ describe('reward categories', () => {
     })
 
     it('list reward categories', () => {
-        cy.get('.fi-sidebar-group-items > :nth-child(7) > .fi-sidebar-item-button', { timeout: 10000 }).contains('Reward Categories').click() // klik menu Reward Categories
+        cy.get(':nth-child(14) > .fi-sidebar-item-button').click() // klik menu Reward Categories
         cy.contains('Reward') // mencari elemen yang berisi teks "Reward"
         cy.wait(5000) // menunggu selama 5 detik
     })
 
     it('tidak ingin create reward category', () => {
-        cy.get('.fi-sidebar-group-items > :nth-child(7) > .fi-sidebar-item-button', { timeout: 10000 }).contains('Reward Categories').click() // klik menu Reward Categories
+        cy.get(':nth-child(14) > .fi-sidebar-item-button').click() // klik menu Reward Categories
         cy.contains('Reward') // mencari elemen yang berisi teks "Reward"
         cy.get('.fi-ac > .fi-btn').click() // klik tombol New reward category
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
@@ -25,14 +25,14 @@ describe('reward categories', () => {
 
     it('create, edit, delete, search reward category', () => {
         // create reward category1
-        cy.get('.fi-sidebar-group-items > :nth-child(7) > .fi-sidebar-item-button', { timeout: 10000 }).contains('Reward Categories').click() // klik menu Reward Categories
+        cy.get(':nth-child(14) > .fi-sidebar-item-button').click() // klik menu Reward Categories
         cy.contains('Reward') // mencari elemen yang berisi teks "Reward"
         cy.get('.fi-ac > .fi-btn').click() // klik tombol New reward category
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('input[id="data.name"]').type('Lifestyle') // input Name "Lifestyle"
         cy.get('select[id="data.type"]').select('CompassPoint Reward') // pilih Type "CompassPoint Reward"
         cy.get('.fi-color-custom').click() // klik tombol Create
-        cy.wait(20000) // menunggu selama 20 detik
+        cy.wait(10000) // menunggu selama 10 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Reward Categories
         cy.contains('Reward') // mencari elemen yang berisi teks "Reward"
         cy.wait(5000) // menunggu selama 5 detik
@@ -43,7 +43,7 @@ describe('reward categories', () => {
         cy.get('input[id="data.name"]').type('Activities') // input Name "Activities"
         cy.get('select[id="data.type"]').select('Flying Cape App Reward') // pilih Type "Flying Cape App Reward"
         cy.get('.fi-color-custom').click() // klik tombol Create
-        cy.wait(20000) // menunggu selama 20 detik
+        cy.wait(10000) // menunggu selama 10 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Reward Categories
         cy.contains('Reward') // mencari elemen yang berisi teks "Reward"
         cy.wait(5000) // menunggu selama 5 detik

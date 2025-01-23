@@ -9,13 +9,13 @@ describe('levels', () => {
     })
 
     it('list levels', () => {
-        cy.get('.fi-sidebar-group-items > :nth-child(3) > .fi-sidebar-item-button', { timeout: 10000}).contains('Levels').click() // klik menu Levels
+        cy.get(':nth-child(9) > .fi-sidebar-item-button').click() // klik menu Levels
         cy.contains('Levels') // mencari elemen yang berisi teks "Levels"
         cy.wait(5000) // menunggu selama 5 detik
     })
 
     it('tidak ingin create level', () => {
-        cy.get('.fi-sidebar-group-items > :nth-child(3) > .fi-sidebar-item-button', { timeout: 10000}).contains('Levels').click() // klik menu Levels
+        cy.get(':nth-child(9) > .fi-sidebar-item-button').click() // klik menu Levels
         cy.contains('Levels') // mencari elemen yang berisi teks "Levels"
         cy.get('.fi-ac > .fi-btn').click() // klik tombol New level
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
@@ -25,7 +25,7 @@ describe('levels', () => {
 
     it('create, edit, delete, search level', () => {
         // create level
-        cy.get('.fi-sidebar-group-items > :nth-child(3) > .fi-sidebar-item-button', { timeout: 10000}).contains('Levels').click() // klik menu Levels
+        cy.get(':nth-child(9) > .fi-sidebar-item-button').click() // klik menu Levels
         cy.contains('Levels') // mencari elemen yang berisi teks "Levels"
         cy.get('.fi-ac > .fi-btn').click() // klik tombol New level
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna

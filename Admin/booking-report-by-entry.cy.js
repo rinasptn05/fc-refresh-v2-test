@@ -33,13 +33,13 @@ describe('booking report by entry', () => {
 
         // filter Organization
         cy.get('div[class="choices__inner"]').eq(0).click() // klik menu dropdown pada Organization
-        cy.wait(5000) // menunggu selama 5 detik
-        cy.get('div[id="choices--tableFiltersidpartner_id-item-choice-1"]').click() // pilih filter Organization "PT Kunci"
         cy.wait(10000) // menunggu selama 10 detik
+        cy.get('div[id="choices--tableFiltersidpartner_id-item-choice-1"]').click() // pilih filter Organization "PT Kunci"
+        cy.wait(5000) // menunggu selama 5 detik
 
         // filter Entry
         cy.get('div[class="choices__inner"]').eq(1).click() // klik menu dropdown pada Entry
-        cy.wait(5000) // menunggu selama 5 detik
+        cy.wait(10000) // menunggu selama 10 detik
         cy.get('div[id="choices--tableFiltersidid-item-choice-1"]').click() // pilih filter Entry "Soccer for kid"
         cy.wait(10000) // menunggu selama 10 detik
 
@@ -51,12 +51,10 @@ describe('booking report by entry', () => {
         cy.contains('Entries') // mencari elemen yang berisi teks "Entries"
         cy.wait(5000) // menunggu selama 5 detik
 
-        // export
-
         // filter Date
             // date1
             cy.get('div[class="choices__inner"]').eq(0).click() // klik menu dropdown pada Organization
-            cy.wait(5000) // menunggu selama 5 detik
+            cy.wait(10000) // menunggu selama 10 detik
             cy.get('div[id="choices--tableFiltersidpartner_id-item-choice-1"]').click() // pilih filter Organization "PT Kunci"
             cy.wait(5000) // menunggu selama 5 detik
 
@@ -74,7 +72,7 @@ describe('booking report by entry', () => {
             cy.get('.fi-ta-filters > :nth-child(1) > .fi-link > .font-semibold').click() // klik Reset
             cy.wait(10000) // menunggu selama 10 detik
             cy.get('div[class="choices__inner"]').eq(0).click() // klik menu dropdown pada Organization
-            cy.wait(5000) // menunggu selama 5 detik
+            cy.wait(10000) // menunggu selama 10 detik
             cy.get('div[id="choices--tableFiltersidpartner_id-item-choice-1"]').click() // pilih filter Organization "PT Kunci"
             cy.wait(5000) // menunggu selama 5 detik
 
@@ -93,12 +91,12 @@ describe('booking report by entry', () => {
             cy.wait(10000) // menunggu selama 10 detik
 
             cy.get('div[class="choices__inner"]').eq(0).click() // klik menu dropdown pada Organization
-            cy.wait(5000) // menunggu selama 5 detik
+            cy.wait(10000) // menunggu selama 10 detik
             cy.get('div[id="choices--tableFiltersidpartner_id-item-choice-1"]').click() // pilih filter Organization "PT Kunci"
             cy.wait(5000) // menunggu selama 5 detik
 
             cy.get('div[class="choices__inner"]').eq(1).click() // klik menu dropdown pada Entry
-            cy.wait(5000) // menunggu selama 5 detik
+            cy.wait(10000) // menunggu selama 10 detik
             cy.get('div[id="choices--tableFiltersidid-item-choice-1"]').click() // pilih filter Entry "Soccer for kid"
             cy.wait(5000) // menunggu selama 5 detik
 
@@ -115,12 +113,12 @@ describe('booking report by entry', () => {
             cy.wait(10000) // menunggu selama 10 detik
 
             cy.get('div[class="choices__inner"]').eq(0).click() // klik menu dropdown pada Organization
-            cy.wait(5000) // menunggu selama 5 detik
+            cy.wait(10000) // menunggu selama 10 detik
             cy.get('div[id="choices--tableFiltersidpartner_id-item-choice-1"]').click() // pilih filter Organization "PT Kunci"
             cy.wait(5000) // menunggu selama 5 detik
 
             cy.get('div[class="choices__inner"]').eq(1).click() // klik menu dropdown pada Entry
-            cy.wait(5000) // menunggu selama 5 detik
+            cy.wait(10000) // menunggu selama 10 detik
             cy.get('div[id="choices--tableFiltersidid-item-choice-2"]').click() // pilih filter Entry "Soccer for kid 2"
             cy.wait(5000) // menunggu selama 5 detik
 

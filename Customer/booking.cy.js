@@ -1,4 +1,4 @@
-describe('dashboard user', () => {
+describe('booking', () => {
     beforeEach(() => {
         cy.exec('cd C:/xampp/htdocs/FlyingCape-Refreshv2-API && php artisan testseed')
         cy.visit('http://127.0.0.1:8000/') // mengunjungi web home flying cape
@@ -11,7 +11,7 @@ describe('dashboard user', () => {
         cy.wait(5000) // menunggu selama 5 detik
     })
 
-    it('wallet di dashboard & booking kelas', () => {
+    it('booking kelas', () => {
         cy.get('.px-16').contains('100000') // memastikan wallet di dashboard ada "100000"
         cy.visit('http://127.0.0.1:8000/') // mengunjungi web home flying cape
         cy.wait(5000) // menunggu selama 5 detik

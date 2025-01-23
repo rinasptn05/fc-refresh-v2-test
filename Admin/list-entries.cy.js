@@ -18,13 +18,13 @@ describe('list entries', () => {
         // edit entry
         cy.get('.fi-sidebar-group-items > :nth-child(1) > .fi-sidebar-item-button', { timeout: 10000}).contains('List Entries').click() // klik menu List Entries
         cy.contains('Informations') // mencari elemen yang berisi teks "Informations"
-        cy.get(':nth-child(1) > :nth-child(7) > .whitespace-nowrap > .fi-ta-actions > .fi-link').click() // klik tombol View pada Name "Soccer for kid"
+        cy.get(':nth-child(1) > :nth-child(7) > .whitespace-nowrap > .fi-ta-actions > .fi-link').click() // klik View pada Name "Soccer for kid"
         cy.contains('Entry') // mencari elemen yang berisi teks "Entry"
 
         const filePath = 'entry.jpg' // path relatif dari file di dalam folder fixtures
         cy.get('input[type="file"]').attachFile(filePath) // pilih input file / klik Browse dan lampirkan file
         cy.wait(30000) // menunggu selama 30 detik
-        cy.get('div[class="choices__inner"]').eq(0).click() // klik menu dropdown pada Entry Type
+        cy.get('div[class="choices__inner"]').eq(0).click() // klik dropdown pada Entry Type
         cy.wait(10000) // menunggu selama 10 detik
         cy.get('div[id="choices--dataentry_type_id-item-choice-5"]').click() // ubah Entry Type dari "Workshop" menjadi "Trial Class"
         cy.get('trix-editor[id="data.description"]').clear().type('Description') // ubah Description dari "desc" menjadi "Description"
@@ -36,7 +36,7 @@ describe('list entries', () => {
 
         // cari entry berdasarkan filter partner
         cy.get('.ms-auto > .fi-dropdown > .fi-dropdown-trigger > .fi-icon-btn').click() // klik tombol Filter
-        cy.get('div[class="choices__inner"]').eq(0).click() // klik menu dropdown pada Partner
+        cy.get('div[class="choices__inner"]').eq(0).click() // klik dropdown pada Partner
         cy.wait(10000) // menunggu selama 10 detik
         cy.get('div[id="choices--tableFilterspartnervalue-item-choice-1"]').click() // pilih filter Partner "PT Kunci"
         cy.wait(10000) // menunggu selama 10 detik
@@ -125,7 +125,7 @@ describe('list entries', () => {
         cy.wait(5000) // menunggu selama 5 detik
 
         // delete entry
-        cy.get(':nth-child(3) > :nth-child(7) > .whitespace-nowrap > .fi-ta-actions > .fi-link > .fi-link-icon').click() // klik tombol View pada Name "Soccer for kid 2"
+        cy.get(':nth-child(3) > :nth-child(7) > .whitespace-nowrap > .fi-ta-actions > .fi-link > .fi-link-icon').click() // klik View pada Name "Soccer for kid 2"
         cy.contains('Entry') // mencari elemen yang berisi teks "Entry"
         cy.get('.fi-header > .fi-ac > .fi-btn').click() // klik tombol Delete
         cy.wait(10000) // menunggu selama 10 detik

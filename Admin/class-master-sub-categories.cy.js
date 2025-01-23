@@ -9,13 +9,13 @@ describe('class master sub categories', () => {
     })
 
     it('list class master sub categories', () => {
-        cy.get('.fi-sidebar-group-items > :nth-child(5) > .fi-sidebar-item-button', { timeout: 10000 }).contains('Class Master Sub Categories').click() // klik menu Class Master Sub Categories
+        cy.get(':nth-child(12) > .fi-sidebar-item-button', { timeout: 10000 }).contains('Class Master Sub Categories').click() // klik menu Class Master Sub Categories
         cy.contains('Sub Categories') // mencari elemen yang berisi teks "Sub Categories"
         cy.wait(5000) // menunggu selama 5 detik
     })
 
     it('tidak ingin create class master sub category', () => {
-        cy.get('.fi-sidebar-group-items > :nth-child(5) > .fi-sidebar-item-button', { timeout: 10000 }).contains('Class Master Sub Categories').click() // klik menu Class Master Sub Categories
+        cy.get(':nth-child(12) > .fi-sidebar-item-button', { timeout: 10000 }).contains('Class Master Sub Categories').click() // klik menu Class Master Sub Categories
         cy.contains('Sub Categories') // mencari elemen yang berisi teks "Sub Categories"
         cy.get('.fi-ac > .fi-btn').click() // klik tombol New class master sub category
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
@@ -25,7 +25,7 @@ describe('class master sub categories', () => {
 
     it('create, edit, delete class master sub category', () => {
         // create class master sub category
-        cy.get('.fi-sidebar-group-items > :nth-child(5) > .fi-sidebar-item-button', { timeout: 10000 }).contains('Class Master Sub Categories').click() // klik menu Class Master Sub Categories
+        cy.get(':nth-child(12) > .fi-sidebar-item-button', { timeout: 10000 }).contains('Class Master Sub Categories').click() // klik menu Class Master Sub Categories
         cy.contains('Sub Categories') // mencari elemen yang berisi teks "Sub Categories"
         cy.get('.fi-ac > .fi-btn').click() // klik tombol New class master sub category
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna

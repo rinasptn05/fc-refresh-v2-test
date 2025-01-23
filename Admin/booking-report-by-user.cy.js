@@ -39,13 +39,10 @@ describe('booking report by user', () => {
 
         // lihat detail / view booking report by user
         cy.get('.fi-ta-actions > .fi-link').click() // klik View pada Entry Name "Soccer for kid"
-        cy.wait(5000) // menunggu selama 5 detik
+        cy.wait(10000) // menunggu selama 10 detik
         cy.contains('View').should('be.visible') // mencari elemen yang berisi teks "View" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
         cy.get('.fi-btn').click() // klik tombol Close
         cy.wait(5000) // menunggu selama 5 detik
-
-        // filters
-        
     })
 })

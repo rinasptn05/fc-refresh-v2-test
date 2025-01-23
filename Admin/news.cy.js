@@ -8,14 +8,14 @@ describe('news', () => {
         cy.contains('Dashboard', { timeout: 20000 }).should('be.visible') // mencari elemen yang berisi teks "Dashboard" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna, menentukan bahwa Cypress harus menunggu hingga 20.000 milidetik (20 detik) agar elemen dengan teks 'Dashboard' muncul
     })
 
-    it('list news', () => {
-        cy.get('.fi-sidebar-group-items > :nth-child(6) > .fi-sidebar-item-button', { timeout: 10000 }).contains('News').click() // klik menu News
+    it('list news', () => {    
+        cy.get(':nth-child(13) > .fi-sidebar-item-button').click() // klik menu News
         cy.contains('News') // mencari elemen yang berisi teks "News"
         cy.wait(5000) // menunggu selama 5 detik
     })
 
     it('tidak ingin create news', () => {
-        cy.get('.fi-sidebar-group-items > :nth-child(6) > .fi-sidebar-item-button', { timeout: 10000 }).contains('News').click() // klik menu News
+        cy.get(':nth-child(13) > .fi-sidebar-item-button').click() // klik menu News
         cy.contains('News') // mencari elemen yang berisi teks "News"
         cy.get('.fi-ac > .fi-btn').click() // klik tombol New news
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
@@ -25,7 +25,7 @@ describe('news', () => {
 
     it('create, edit, delete news', () => {
         // create news
-        cy.get('.fi-sidebar-group-items > :nth-child(6) > .fi-sidebar-item-button', { timeout: 10000 }).contains('News').click() // klik menu News
+        cy.get(':nth-child(13) > .fi-sidebar-item-button').click() // klik menu News
         cy.contains('News') // mencari elemen yang berisi teks "News"
         cy.get('.fi-ac > .fi-btn').click() // klik tombol New news
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna

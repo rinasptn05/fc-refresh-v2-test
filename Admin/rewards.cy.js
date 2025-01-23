@@ -9,7 +9,7 @@ describe('rewards', () => {
     })
 
     it('tidak ingin create reward', () => {
-        cy.get(':nth-child(8) > .fi-sidebar-item-button').click() // klik menu Rewards
+        cy.get(':nth-child(15) > .fi-sidebar-item-button').click() // klik menu Rewards
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('.fi-color-custom').click() // klik tombol Create
         cy.wait(5000) // menunggu selama 5 detik
@@ -18,7 +18,7 @@ describe('rewards', () => {
     it('create, edit, delete reward', () => {
         // harus create reward category terlebih dahulu agar bisa memilih Reward category id
         // create reward category1
-        cy.get('.fi-sidebar-group-items > :nth-child(7) > .fi-sidebar-item-button', { timeout: 10000 }).contains('Reward Categories').click() // klik menu Reward Categories
+        cy.get(':nth-child(14) > .fi-sidebar-item-button').click() // klik menu Reward Categories
         cy.contains('Reward') // mencari elemen yang berisi teks "Reward"
         cy.get('.fi-ac > .fi-btn').click() // klik tombol New reward category
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
@@ -43,12 +43,12 @@ describe('rewards', () => {
 
         // create reward1
         cy.get('.fi-topbar-open-sidebar-btn').click() // klik icon tiga garis
-        cy.get(':nth-child(8) > .fi-sidebar-item-button').click() // klik menu Rewards
+        cy.get(':nth-child(15) > .fi-sidebar-item-button').click() // klik menu Rewards
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
 
         cy.get('select[id="data.type"]').select('CompassPoint Reward') // pilih Type "CompassPoint Reward"
         cy.get('input[id="data.name"]').type('Reward') // input Name "Reward"
-        cy.wait(5000) // menunggu selama 5 detik
+        cy.wait(10000) // menunggu selama 10 detik
         cy.get('select[id="data.reward_category_id"]').select('Education') // pilih Reward category id "Education"
         cy.get('input[id="data.compass_point"]').type('0') // input Compass point "0"
         cy.get('input[id="data.limit_value"]').type('0') // input Limit value "0"
@@ -61,8 +61,9 @@ describe('rewards', () => {
         cy.get('trix-editor[id="data.about"]').type('Reward') // input About "Reward"
         cy.get('trix-editor[id="data.how_to_get"]').type('How to get') // input How to get "How to get"
         cy.get('trix-editor[id="data.promotion_shout_out"]').type('Promotion shout out') // input Promotion shout out "Promotion shout out"
-        cy.get('.fi-color-custom').click() // klik tombol Create
         cy.wait(5000) // menunggu selama 5 detik
+        cy.get('.fi-color-custom').click() // klik tombol Create
+        cy.wait(10000) // menunggu selama 10 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Rewards
         cy.contains('Create') // mencari elemen yang berisi teks "Create"
         cy.wait(5000) // menunggu selama 5 detik
@@ -70,7 +71,7 @@ describe('rewards', () => {
         // create reward2
         cy.get('select[id="data.type"]').select('Flying Cape App Reward') // pilih Type "Flying Cape App Reward"
         cy.get('input[id="data.name"]').type('Reward 2') // input Name "Reward 2"
-        cy.wait(5000) // menunggu selama 5 detik
+        cy.wait(10000) // menunggu selama 10 detik
         cy.get('select[id="data.reward_category_id"]').select('Activities') // pilih Reward category id "Activities"
         cy.get('input[id="data.merchant_email"]').type('merchant@gmail.com') // input Merchant email "merchant@gmail.com"
         cy.get('input[id="data.scenario-none"]').click() // pilih Scenario "No Pin Number / No Voucher"
@@ -83,8 +84,9 @@ describe('rewards', () => {
         cy.get('trix-editor[id="data.about"]').type('Reward 2') // input About "Reward 2"
         cy.get('trix-editor[id="data.how_to_get"]').type('How to get') // input How to get "How to get"
         cy.get('trix-editor[id="data.promotion_shout_out"]').type('Promotion shout out') // input Promotion shout out "Promotion shout out"
-        cy.get('.fi-color-custom').click() // klik tombol Create
         cy.wait(5000) // menunggu selama 5 detik
+        cy.get('.fi-color-custom').click() // klik tombol Create
+        cy.wait(10000) // menunggu selama 10 detik
         cy.contains('Edit').should('be.visible') // mencari elemen yang berisi teks "Edit" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
 

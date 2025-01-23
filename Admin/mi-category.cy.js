@@ -20,7 +20,7 @@ describe('mi category', () => {
       cy.get('.fi-ac > .fi-btn').click() // klik tombol New class master mi category
       cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.get('.fi-color-custom').click() // klik tombol Create
-      cy.wait(5000) // menunggu selama 5 detik
+      cy.wait(10000) // menunggu selama 10 detik
     })  
 
     it('create, edit, delete class master mi category', () => {
@@ -50,7 +50,7 @@ describe('mi category', () => {
       cy.get(':nth-child(9) > :nth-child(3) > .whitespace-nowrap > .fi-ta-actions > .fi-link').click() // klik tombol Edit pada mi category People Smart 2
       cy.contains('Edit').should('be.visible') // mencari elemen yang berisi teks "Edit" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.get('.fi-header > .fi-ac > .fi-btn').click() // klik tombol Delete
-      cy.wait(5000) // menunggu selama 5 detik
+      cy.wait(10000) // menunggu selama 10 detik
       cy.contains('Delete').should('be.visible') // mencari elemen yang berisi teks "Delete" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm 
       cy.wait(5000) // menunggu selama 5 detik

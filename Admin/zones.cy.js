@@ -9,13 +9,13 @@ describe('zones', () => {
     })
 
     it('list zones', () => {
-        cy.get(':nth-child(10) > .fi-sidebar-item-button').click() // klik menu Zones
+        cy.get(':nth-child(21) > .fi-sidebar-item-button').click() // klik menu Zones
         cy.contains('Zones') // mencari elemen yang berisi teks "Zones"
         cy.wait(5000) // menunggu selama 5 detik
     })
 
     it('tidak ingin create zone', () => {
-        cy.get(':nth-child(10) > .fi-sidebar-item-button').click() // klik menu Zones
+        cy.get(':nth-child(21) > .fi-sidebar-item-button').click() // klik menu Zones
         cy.contains('Zones') // mencari elemen yang berisi teks "Zones"
         cy.get('.fi-ac > .fi-btn').click() // klik tombol New zone
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
@@ -25,13 +25,13 @@ describe('zones', () => {
 
     it('create, edit, delete, search zone', () => {
         // create zone
-        cy.get(':nth-child(10) > .fi-sidebar-item-button').click() // klik menu Zones
+        cy.get(':nth-child(21) > .fi-sidebar-item-button').click() // klik menu Zones
         cy.contains('Zones') // mencari elemen yang berisi teks "Zones"
         cy.get('.fi-ac > .fi-btn').click() // klik tombol New zone
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('input[id="data.name"]').type('South') // input Name "South"
         cy.get('.fi-color-custom').click() // klik tombol Create
-        cy.wait(5000) // menunggu selama 5 detik
+        cy.wait(10000) // menunggu selama 10 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Zones
         cy.contains('Zones') // mencari elemen yang berisi teks "Zones"
         cy.wait(5000) // menunggu selama 5 detik

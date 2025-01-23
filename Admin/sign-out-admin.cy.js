@@ -8,14 +8,6 @@ describe('sign out admin', () => {
         cy.contains('Dashboard', { timeout: 20000 }).should('be.visible') // mencari elemen yang berisi teks "Dashboard" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna, menentukan bahwa Cypress harus menunggu hingga 20.000 milidetik (20 detik) agar elemen dengan teks 'Dashboard' muncul
     })
 
-    // it('sign out1', () => {
-    //     cy.get('.fi-active > .fi-sidebar-item-button').click() // klik menu Dashboard
-    //     cy.contains('Dashboard') // mencari elemen yang berisi teks "Dashboard"
-    //     cy.get('.fi-btn').click() // klik tombol Sign out
-    //     cy.contains('Sign in').should('be.visible') // mencari elemen yang berisi teks "Sign in" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
-    //     cy.wait(5000) // menunggu selama 5 detik
-    // })
-
     it('sign out2', () => {
         cy.get('.fi-active > .fi-sidebar-item-button').click() // klik menu Dashboard
         cy.contains('Dashboard') // mencari elemen yang berisi teks "Dashboard"

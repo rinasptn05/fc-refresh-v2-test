@@ -31,7 +31,7 @@ describe('partner user accounts', () => {
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
 
         cy.get('select[id="data.partner_id"]').select('PT Kunci') // pilih Partner Name "PT Kunci"
-        cy.get('select[id="data.user_rights"]').select('Admin') // pilih User rights "Admin"
+        cy.get('select[id="data.user_rights"]').select('Admin') // pilih User Rights "Admin"
         cy.get('input[id="data.name"]').type('user') // input Account Holder Name "user"
         cy.get('input[id="data.email"]').type('user@gmail.com') // input Email "user@gmail.com"
         cy.get('input[id="data.password"]').type('user12345') // input Password "user12345"

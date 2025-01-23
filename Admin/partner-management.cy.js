@@ -10,13 +10,13 @@ describe('partner management', () => {
 
     it('list partners', () => {
         cy.get('.fi-sidebar-group-items > :nth-child(2) > .fi-sidebar-item-button', { timeout: 10000 }).contains('Partner Management').click() // klik menu Partner Management
-        cy.contains('Code').should('be.visible') // mencari elemen yang berisi teks "Code" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('Code') // mencari elemen yang berisi teks "Code"
         cy.wait(5000) // menunggu selama 5 detik
     })
 
     it('tidak ingin create partner', () => {
       cy.get('.fi-sidebar-group-items > :nth-child(2) > .fi-sidebar-item-button', { timeout: 10000 }).contains('Partner Management').click() // klik menu Partner Management
-      cy.contains('Code').should('be.visible') // mencari elemen yang berisi teks "Code" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.contains('Code') // mencari elemen yang berisi teks "Code"
       cy.get('.fi-ac > .fi-btn').click() // klik tombol New partner
       cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.get('.fi-color-custom').click() // klik tombol Create
@@ -26,11 +26,11 @@ describe('partner management', () => {
     it('create, edit, delete partner', () => {
       // create partner
         cy.get('.fi-sidebar-group-items > :nth-child(2) > .fi-sidebar-item-button', { timeout: 10000 }).contains('Partner Management').click() // klik menu Partner Management
-        cy.contains('Code').should('be.visible') // mencari elemen yang berisi teks "Code" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('Code') // mencari elemen yang berisi teks "Code"
         cy.get('.fi-ac > .fi-btn').click() // klik tombol New partner
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
 
-        cy.get('input[id="data.name"]').type('PT Abadi') // isi Name "PT Abadi"
+        cy.get('input[id="data.name"]').type('PT Abadi') // input Name "PT Abadi"
         cy.get('input[id="data.allow_eduhunt-0"]').check() // pilih Allow eduhunt "No"
         cy.get('input[id="data.special_need-0"]').check() // pilih Does your company support Special Needs ? "No"
         cy.get('input[id="data.all_in_partner-0"]').check() // pilih Is your company an All In partner ? "No"
@@ -38,7 +38,7 @@ describe('partner management', () => {
         cy.get('.fi-color-custom').click() // klik tombol Create
         cy.wait(10000) // menunggu selama 10 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Partners
-        cy.contains('Code').should('be.visible') // mencari elemen yang berisi teks "Code" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('Code') // mencari elemen yang berisi teks "Code"
         cy.wait(5000) // menunggu selama 5 detik
 
         // edit partner
@@ -48,7 +48,7 @@ describe('partner management', () => {
         cy.get('.fi-form-actions > .fi-ac > .fi-color-custom').click() // klik tombol Save changes
         cy.wait(5000) // menunggu selama 5 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Partners
-        cy.contains('Code').should('be.visible') // mencari elemen yang berisi teks "Code" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('Code') // mencari elemen yang berisi teks "Code"
         cy.wait(5000) // menunggu selama 5 detik
 
         // delete partner

@@ -32,7 +32,7 @@ describe('setup holidays', () => {
         cy.get('input[id="data.holiday_desc"]').type('Labour Day') // input Description "Labour Day"
         cy.get('input[id="data.holiday_date"]').type('2025-05-01') // input Date "2025-05-01"
         cy.get('.fi-color-custom').click() // klik tombol Create
-        cy.wait(5000) // menunggu selama 5 detik
+        cy.wait(10000) // menunggu selama 10 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Holidays
         cy.contains('Holidays') // mencari elemen yang berisi teks "Holidays"
         cy.wait(5000) // menunggu selama 5 detik

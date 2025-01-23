@@ -64,11 +64,19 @@ describe('customer wallet transactions', () => {
       cy.get('.fi-dropdown-trigger > .fi-icon-btn > .fi-icon-btn-icon > path').click() // klik tombol Toggle columns
       cy.wait(10000) // menunggu selama 10 detik
 
-      // // edit customer wallet transaction
-      // cy.get(':nth-child(2) > :nth-child(5) > .whitespace-nowrap > .fi-ta-actions > a.fi-link').click() // klik tombol Edit
-      // cy.get('input[id="data.amount"]').clear().type('70') // ubah Amount dari "50" menjadi "70"
-      // cy.get('.fi-form-actions > .fi-ac > .fi-color-custom').click() // klik tombol Save changes
-      // cy.wait(5000) // menunggu selama 5 detik
+      // edit customer wallet transaction
+      cy.get(':nth-child(2) > :nth-child(5) > .whitespace-nowrap > .fi-ta-actions > a.fi-link').click() // klik tombol Edit
+      cy.get('input[id="data.amount"]').clear().type('70') // ubah Amount dari "50" menjadi "70"
+      cy.get('.fi-form-actions > .fi-ac > .fi-color-custom').click() // klik tombol Save changes
+      cy.wait(10000) // menunggu selama 10 detik
+      cy.get('#livewire-error').click()
+      cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() //  klik Customer Wallet Transactions
+      cy.contains('Wallet') // mencari elemen yang berisi teks "Wallet"
+      cy.wait(5000) // menunggu selama 5 detik
+      cy.get('div[class="choices__inner"]').click() // klik menu dropdown pada Customer Email
+      cy.wait(5000) // menunggu selama 5 detik
+      cy.get('div[id="choices--tableFilterscustomercustomer-item-choice-1"]').click() // pilih Customer Email "customer@gmail.com"
+      cy.wait(10000) // menunggu selama 10 detik
 
       // delete customer wallet transaction
       cy.get(':nth-child(2) > :nth-child(5) > .whitespace-nowrap > .fi-ta-actions > button.fi-link').click() // klik tombol Delete

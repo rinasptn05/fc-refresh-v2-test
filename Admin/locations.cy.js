@@ -9,23 +9,23 @@ describe('locations', () => {
     })
 
     it('list locations', () => {
-        cy.get('.fi-sidebar-group-items > :nth-child(4) > .fi-sidebar-item-button', { timeout: 10000}).contains('Locations').click() // klik menu Locations
+        cy.get(':nth-child(10) > .fi-sidebar-item-button').click() // klik menu Locations
         cy.contains('Locations') // mencari elemen yang berisi teks "Locations"
         cy.wait(5000) // menunggu selama 5 detik
     })
 
     it('tidak ingin create location', () => {
-        cy.get('.fi-sidebar-group-items > :nth-child(4) > .fi-sidebar-item-button', { timeout: 10000}).contains('Locations').click() // klik menu Locations
+        cy.get(':nth-child(10) > .fi-sidebar-item-button').click() // klik menu Locations
         cy.contains('Locations') // mencari elemen yang berisi teks "Locations"
         cy.get('.fi-ac > .fi-btn').click() // klik tombol New location
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('.fi-color-custom').click() // klik tombol Create
-        cy.wait(5000) // menunggu selama 5 detik
+        cy.wait(10000) // menunggu selama 10 detik
     })
 
     it('create, edit, delete, search location', () => {
         // create location
-        cy.get('.fi-sidebar-group-items > :nth-child(4) > .fi-sidebar-item-button', { timeout: 10000}).contains('Locations').click() // klik menu Locations
+        cy.get(':nth-child(10) > .fi-sidebar-item-button').click() // klik menu Locations
         cy.contains('Locations') // mencari elemen yang berisi teks "Locations"
         cy.get('.fi-ac > .fi-btn').click() // klik tombol New location
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna

@@ -23,7 +23,7 @@ describe('customers', () => {
       cy.wait(5000) // menunggu selama 5 detik
     })
     
-    it('create, edit, delete customer & wallet transactions', () => {
+    it('create, edit, delete, search customer & wallet transactions', () => {
       // create customer
       cy.get('.fi-sidebar-group-items > :nth-child(6) > .fi-sidebar-item-button', { timeout: 10000 }).contains('Customers').click() // klik menu Customers
       cy.contains('Customers') // mencari elemen yang berisi teks "Customers"
@@ -60,20 +60,22 @@ describe('customers', () => {
       cy.contains('Customer') // mencari elemen yang berisi teks "Customer"
       cy.wait(20000) // menunggu selama 20 detik
       cy.contains('Wallet Transactions') // mencari elemen yang berisi teks "Wallet Transactions"
-      cy.wait(5000) // menunggu selama 5 detik      
+      cy.wait(5000) // menunggu selama 5 detik
+
+      // adjust wallet
+      cy.get('.fi-ta-actions > .fi-btn').click() // klik tombol Adjust Wallet
+      cy.wait(10000) // menunggu selama 10 detik
+      cy.contains('Adjust') // mencari elemen yang berisi teks "Adjust"
+      cy.get('input[id="mountedTableActionsData.0.amount"]').type('100') // input Amount "100"
+      cy.get('select[id="mountedTableActionsData.0.action"]').select("Add") // pilih Action "Add"
+      cy.get('input[id="mountedTableActionsData.0.reason"]').type('Top up') // input Reason "Top up"
+      cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Submit
+      cy.wait(10000) // menunggu selama 10 detik
+      cy.get('#livewire-error').click()
+      cy.get('.absolute > .fi-icon-btn').click() // klik close
       cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Customers
       cy.contains('Customers') // mencari elemen yang berisi teks "Customers"
       cy.wait(5000) // menunggu selama 5 detik
-
-      // // adjust wallet
-      // cy.get('.fi-ta-actions > .fi-btn').click() // klik tombol Adjust Wallet
-      // cy.wait(10000) // menunggu selama 10 detik
-      // cy.contains('Adjust') // mencari elemen yang berisi teks "Adjust"
-      // cy.get('input[id="mountedTableActionsData.0.amount"]').type('100') // input Amount "100"
-      // cy.get('select[id="mountedTableActionsData.0.action"]').select("Add") // pilih Action "Add"
-      // cy.get('input[id="mountedTableActionsData.0.reason"]').type('Top up') // input Reason "Top up"
-      // cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Submit
-      // cy.wait(10000) // menunggu selama 10 detik
 
       // cari customer berdasarkan apa yang admin input1
       cy.get('input[id="input-1"]').type('rina') // input "rina" pada menu pencarian

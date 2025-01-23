@@ -9,13 +9,13 @@ describe('years', () => {
     })
 
     it('list years', () => {
-        cy.get(':nth-child(9) > .fi-sidebar-item-button').click() // klik menu Years
+        cy.get(':nth-child(19) > .fi-sidebar-item-button').click() // klik menu Years
         cy.contains('Years') // mencari elemen yang berisi teks "Years"
         cy.wait(5000) // menunggu selama 5 detik
     })
 
     it('tidak ingin create year', () => {
-        cy.get(':nth-child(9) > .fi-sidebar-item-button').click() // klik menu Years
+        cy.get(':nth-child(19) > .fi-sidebar-item-button').click() // klik menu Years
         cy.contains('Years') // mencari elemen yang berisi teks "Years"
         cy.get('.fi-ac > .fi-btn').click() // klik tombol New year
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
@@ -26,7 +26,7 @@ describe('years', () => {
     it('create, edit, delete, search year', () => {
         // harus create level terlebih dahulu agar bisa memilih Level id
         // create level
-        cy.get('.fi-sidebar-group-items > :nth-child(3) > .fi-sidebar-item-button', { timeout: 10000}).contains('Levels').click() // klik menu Levels
+        cy.get(':nth-child(9) > .fi-sidebar-item-button').click() // klik menu Levels
         cy.contains('Levels') // mencari elemen yang berisi teks "Levels"
         cy.get('.fi-ac > .fi-btn').click() // klik tombol New level
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
@@ -39,7 +39,7 @@ describe('years', () => {
 
         // create year
         cy.get('.fi-topbar-open-sidebar-btn').click() // klik icon tiga garis
-        cy.get(':nth-child(9) > .fi-sidebar-item-button').click() // klik menu Years
+        cy.get(':nth-child(19) > .fi-sidebar-item-button').click() // klik menu Years
         cy.contains('Years') // mencari elemen yang berisi teks "Years"
         cy.get('.fi-ac > .fi-btn').click() // klik tombol New year
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna

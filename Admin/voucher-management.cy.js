@@ -50,7 +50,7 @@ describe('voucher management', () => {
         cy.wait(10000) // menunggu selama 10 detik
         cy.get('div[id="choices--dataclass_master_campaign_tag_id-item-choice-1"]').click() // pilih Assign To Tag "Promotion"
         cy.get('.fi-ac > .fi-color-custom').click() // klik tombol Create
-        cy.wait(5000) // menunggu selama 5 detik
+        cy.wait(10000) // menunggu selama 10 detik
 
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Vouchers
         cy.contains('Vouchers') // mencari elemen yang berisi teks "Vouchers"
