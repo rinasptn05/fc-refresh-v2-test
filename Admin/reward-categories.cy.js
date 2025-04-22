@@ -5,25 +5,28 @@ describe('reward categories', () => {
         cy.get('input[type=email]').type('admin@gmail.com') // input email "admin@gmail.com"
         cy.get('input[type=password]').type('admin123') // input password "admin123"
         cy.get('.fi-btn').click() // klik tombol Sign in
-        cy.contains('Dashboard', { timeout: 20000 }).should('be.visible') // mencari elemen yang berisi teks "Dashboard" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna, menentukan bahwa Cypress harus menunggu hingga 20.000 milidetik (20 detik) agar elemen dengan teks 'Dashboard' muncul
+        cy.contains('Dashboard', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Dashboard" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna, menentukan bahwa Cypress harus menunggu hingga 30.000 milidetik (30 detik) agar elemen dengan teks 'Dashboard' muncul
     })
 
     it('list reward categories', () => {
         cy.get(':nth-child(14) > .fi-sidebar-item-button').click() // klik menu Reward Categories
         cy.contains('Reward') // mencari elemen yang berisi teks "Reward"
+        cy.contains('No reward categories').should('be.visible') // mencari elemen yang berisi teks "No reward categories" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
     })
 
-    it('tidak ingin create reward category', () => {
+    it('create reward category berdasarkan default', () => {
         cy.get(':nth-child(14) > .fi-sidebar-item-button').click() // klik menu Reward Categories
         cy.contains('Reward') // mencari elemen yang berisi teks "Reward"
         cy.get('.fi-ac > .fi-btn').click() // klik tombol New reward category
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('.fi-color-custom').click() // klik tombol Create
         cy.wait(5000) // menunggu selama 5 detik
+        cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.wait(5000) // menunggu selama 5 detik
     })
 
-    it('create, edit, delete, search reward category', () => {
+    it('create, edit, search, delete reward category', () => {
         // create reward category1
         cy.get(':nth-child(14) > .fi-sidebar-item-button').click() // klik menu Reward Categories
         cy.contains('Reward') // mencari elemen yang berisi teks "Reward"
@@ -35,6 +38,7 @@ describe('reward categories', () => {
         cy.wait(10000) // menunggu selama 10 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Reward Categories
         cy.contains('Reward') // mencari elemen yang berisi teks "Reward"
+        cy.contains('Lifestyle').should('be.visible') // mencari elemen yang berisi teks "Lifestyle" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
 
         // create reward category2
@@ -46,16 +50,18 @@ describe('reward categories', () => {
         cy.wait(10000) // menunggu selama 10 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Reward Categories
         cy.contains('Reward') // mencari elemen yang berisi teks "Reward"
+        cy.contains('Activities').should('be.visible') // mencari elemen yang berisi teks "Activities" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
 
         // edit reward category
-        cy.get(':nth-child(1) > :nth-child(4) > .whitespace-nowrap > .fi-ta-actions > a.fi-link').click() // klik tombol Edit pada Name "Lifestyle"
+        cy.get(':nth-child(1) > :nth-child(4) > .whitespace-nowrap > .fi-ta-actions > a.fi-link').click() // klik Edit pada Name "Lifestyle"
         cy.contains('Edit').should('be.visible') // mencari elemen yang berisi teks "Edit" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('input[id="data.name"]').clear().type('Education') // ubah Name dari "Lifestyle" menjadi "Education"
         cy.get('.fi-form-actions > .fi-ac > .fi-color-custom').click() // klik tombol Save changes
-        cy.wait(5000) // menunggu selama 5 detik
+        cy.wait(10000) // menunggu selama 10 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Reward Categories
         cy.contains('Reward') // mencari elemen yang berisi teks "Reward"
+        cy.contains('Education').should('be.visible') // mencari elemen yang berisi teks "Education" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
 
         // cari reward category berdasarkan filter type1
@@ -63,6 +69,8 @@ describe('reward categories', () => {
         cy.get('select[id="tableFilters.type.value"]').select('Flying Cape App Reward') // pilih filter Type "Flying Cape App Reward"
         cy.wait(10000) // menunggu selama 10 detik
         cy.get('.ms-auto > .fi-dropdown > .fi-dropdown-trigger > .fi-icon-btn').click() // klik tombol Filter
+        cy.wait(5000) // menunggu selama 5 detik
+        cy.contains('Flying Cape App Reward') // mencari elemen yang berisi teks "Flying Cape App Reward"
         cy.wait(5000) // menunggu selama 5 detik
         cy.get('.ms-auto > .fi-dropdown > .fi-dropdown-trigger > .fi-icon-btn').click() // klik tombol Filter
 
@@ -73,12 +81,16 @@ describe('reward categories', () => {
         cy.wait(10000) // menunggu selama 10 detik
         cy.get('.ms-auto > .fi-dropdown > .fi-dropdown-trigger > .fi-icon-btn').click() // klik tombol Filter
         cy.wait(5000) // menunggu selama 5 detik
-        cy.get('.fi-badge-delete-button').click() // klik silang untuk delete type
+        cy.contains('CompassPoint Reward') // mencari elemen yang berisi teks "CompassPoint Reward"
         cy.wait(5000) // menunggu selama 5 detik
+        cy.get('.fi-badge-delete-button').click() // klik silang untuk delete type
+        cy.wait(10000) // menunggu selama 10 detik
 
         // cari reward category berdasarkan apa yang admin input1
         cy.get('input[id="input-1"]').type('abc') // input Search "abc"
         cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('No reward categories').should('be.visible') // mencari elemen yang berisi teks "No reward categories" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.wait(5000) // menunggu selama 5 detik
 
         // cari reward category berdasarkan apa yang admin input2
         cy.get('input[id="input-1"]').clear().type('education') // input Search "education"
@@ -87,10 +99,12 @@ describe('reward categories', () => {
         cy.wait(5000) // menunggu selama 5 detik
 
         // delete reward category
-        cy.get(':nth-child(1) > :nth-child(4) > .whitespace-nowrap > .fi-ta-actions > button.fi-link').click() // klik tombol Delete pada Name Education
-        cy.wait(5000) // menunggu selama 5 detik
+        cy.get(':nth-child(1) > :nth-child(4) > .whitespace-nowrap > .fi-ta-actions > button.fi-link').click() // klik Delete pada Name "Education"
+        cy.wait(10000) // menunggu selama 10 detik
         cy.contains('Delete') // mencari elemen yang berisi teks "Delete"        
-        cy.get('.fi-modal-footer-actions > .fi-color-custom', { timeout: 10000 }).click() // klik tombol Confirm
+        cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm
+        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Education').should('not.exist') // memastikan tidak ada elemen yang mengandung teks "Education"
         cy.wait(5000) // menunggu selama 5 detik
     })
 })

@@ -5,12 +5,14 @@ describe('booking report by user', () => {
         cy.get('input[type=email]').type('admin@gmail.com') // input email "admin@gmail.com"
         cy.get('input[type=password]').type('admin123') // input password "admin123"
         cy.get('.fi-btn').click() // klik tombol Sign in
-        cy.contains('Dashboard', { timeout: 20000 }).should('be.visible') // mencari elemen yang berisi teks "Dashboard" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna, menentukan bahwa Cypress harus menunggu hingga 20.000 milidetik (20 detik) agar elemen dengan teks 'Dashboard' muncul
+        cy.contains('Dashboard', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Dashboard" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna, menentukan bahwa Cypress harus menunggu hingga 30.000 milidetik (30 detik) agar elemen dengan teks 'Dashboard' muncul
     })
 
     it('list booking report by users', () => {
         cy.get('.fi-sidebar-group-items > :nth-child(7) > .fi-sidebar-item-button', { timeout: 10000 }).contains('Booking Report By User').click() // klik menu Booking Report By User
         cy.contains('Users').should('be.visible') // mencari elemen yang berisi teks "Users" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
+        cy.contains('No Booking Report By Users').should('be.visible') // mencari elemen yang berisi teks "No Booking Report By Users" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
     })
 

@@ -15,11 +15,13 @@ describe('booking', () => {
         cy.get('.px-16').contains('100000') // memastikan wallet di dashboard ada "100000"
         cy.visit('http://127.0.0.1:8000/') // mengunjungi web home flying cape
         cy.wait(5000) // menunggu selama 5 detik
+        cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
         cy.get('a[href="http://127.0.0.1:8000/class/1"]').contains('Details').click({ force: true }) // klik tombol Details
         cy.get('a[href="/checkout/1?timeSlotId=1"]').contains('Book Now').click() // klik tombol Book Now
         cy.get('#increment-button').click() // klik tombol icon tambah
         cy.get('input[id="hobby"]').type('Playing soccer') // input What's your Hobby? "Playing soccer"
         cy.wait(5000) // menunggu selama 5 detik
+        cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
         cy.get('.mt-5 > .mt-3').click() // klik tombol Continue to Checkout
         cy.wait(10000) // menunggu selama 10 detik
         cy.get('.px-16').contains('99900') // memastikan wallet di dashboard ada "99900" (berkurang)

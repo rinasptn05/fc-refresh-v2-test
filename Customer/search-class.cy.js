@@ -19,5 +19,7 @@ describe('search class flying cape', () => {
       cy.wait(5000) // menunggu selama 5 detik
       cy.get('button[class="text-white absolute right-2 bg-danger font-bold hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-2 py-2 dark:bg-blue-600 dark:hover:bg-danger dark:focus:ring-blue-800"]').click() // klik tombol Search
       cy.wait(20000) // menunggu selama 20 detik
+      cy.contains('Displaying total 0 found out of 0 for abcd').should('be.visible') // mencari elemen yang berisi teks "Displaying total 0 found out of 0 for abcd" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.wait(5000) // menunggu selama 5 detik
     })
 })

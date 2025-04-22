@@ -5,21 +5,24 @@ describe('partner management', () => {
       cy.get('input[type=email]').type('admin@gmail.com') // input email "admin@gmail.com"
       cy.get('input[type=password]').type('admin123') // input password "admin123"
       cy.get('.fi-btn').click() // klik tombol Sign in
-      cy.contains('Dashboard', { timeout: 20000 }).should('be.visible') // mencari elemen yang berisi teks "Dashboard" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna, menentukan bahwa Cypress harus menunggu hingga 20.000 milidetik (20 detik) agar elemen dengan teks 'Dashboard' muncul
+      cy.contains('Dashboard', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Dashboard" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna, menentukan bahwa Cypress harus menunggu hingga 30.000 milidetik (30 detik) agar elemen dengan teks 'Dashboard' muncul
     })
 
     it('list partners', () => {
         cy.get('.fi-sidebar-group-items > :nth-child(2) > .fi-sidebar-item-button', { timeout: 10000 }).contains('Partner Management').click() // klik menu Partner Management
         cy.contains('Code') // mencari elemen yang berisi teks "Code"
+        cy.contains('FCP01').should('be.visible') // mencari elemen yang berisi teks "FCP01" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
     })
 
-    it('tidak ingin create partner', () => {
+    it('create partner berdasarkan default', () => {
       cy.get('.fi-sidebar-group-items > :nth-child(2) > .fi-sidebar-item-button', { timeout: 10000 }).contains('Partner Management').click() // klik menu Partner Management
       cy.contains('Code') // mencari elemen yang berisi teks "Code"
       cy.get('.fi-ac > .fi-btn').click() // klik tombol New partner
       cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.get('.fi-color-custom').click() // klik tombol Create
+      cy.wait(5000) // menunggu selama 5 detik
+      cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.wait(5000) // menunggu selama 5 detik
     })
 
@@ -39,25 +42,28 @@ describe('partner management', () => {
         cy.wait(10000) // menunggu selama 10 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Partners
         cy.contains('Code') // mencari elemen yang berisi teks "Code"
+        cy.contains('PT Abadi').should('be.visible') // mencari elemen yang berisi teks "PT Abadi" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
 
         // edit partner
-        cy.get(':nth-child(2) > :nth-child(4) > .whitespace-nowrap').click() // klik tombol Edit pada Name PT Abadi
+        cy.get(':nth-child(2) > :nth-child(4) > .whitespace-nowrap').click() // klik Edit pada Name "PT Abadi"
         cy.contains('Edit').should('be.visible') // mencari elemen yang berisi teks "Edit" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
-        cy.get('input[id="data.allow_eduhunt-1"]').check() // ubah Allow eduhunt dari "No" ke "Yes"
+        cy.get('input[id="data.allow_eduhunt-1"]').check() // ubah Allow eduhunt dari "No" menjadi "Yes"
         cy.get('.fi-form-actions > .fi-ac > .fi-color-custom').click() // klik tombol Save changes
-        cy.wait(5000) // menunggu selama 5 detik
+        cy.wait(10000) // menunggu selama 10 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Partners
         cy.contains('Code') // mencari elemen yang berisi teks "Code"
         cy.wait(5000) // menunggu selama 5 detik
 
         // delete partner
-        cy.get(':nth-child(2) > :nth-child(4) > .whitespace-nowrap').click() // klik tombol Edit pada Name PT Abadi
+        cy.get(':nth-child(2) > :nth-child(4) > .whitespace-nowrap').click() // klik Edit pada Name "PT Abadi"
         cy.contains('Edit').should('be.visible') // mencari elemen yang berisi teks "Edit" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('.fi-header > .fi-ac > .fi-btn').click() // klik tombol Delete
         cy.wait(10000) // menunggu selama 10 detik
         cy.contains('Delete').should('be.visible') // mencari elemen yang berisi teks "Delete" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
-        cy.get('.fi-modal-footer-actions > .fi-color-custom', { timeout: 10000 }).click() // klik tombol Confirm
+        cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm
+        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('PT Abadi').should('not.exist') // memastikan tidak ada elemen yang mengandung teks "PT Abadi"
         cy.wait(5000) // menunggu selama 5 detik
       })
 })

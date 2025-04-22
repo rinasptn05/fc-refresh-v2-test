@@ -5,22 +5,26 @@ describe('mi category', () => {
       cy.get('input[type=email]').type('admin@gmail.com') // input email "admin@gmail.com"
       cy.get('input[type=password]').type('admin123') // input password "admin123"
       cy.get('.fi-btn').click() // klik tombol Sign in
-      cy.contains('Dashboard', { timeout: 20000 }).should('be.visible') // mencari elemen yang berisi teks "Dashboard" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna, menentukan bahwa Cypress harus menunggu hingga 20.000 milidetik (20 detik) agar elemen dengan teks 'Dashboard' muncul
+      cy.contains('Dashboard', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Dashboard" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna, menentukan bahwa Cypress harus menunggu hingga 30.000 milidetik (30 detik) agar elemen dengan teks 'Dashboard' muncul
     })
 
     it('list class master mi categories', () => {
         cy.get('.fi-sidebar-group-items > :nth-child(3) > .fi-sidebar-item-button', { timeout: 10000 }).contains('MI Category').click() // klik menu MI Category
         cy.contains('Categories') // mencari elemen yang berisi teks "Categories"
+        cy.contains('Word Smart').should('be.visible') // mencari elemen yang berisi teks "Word Smart" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
         cy.wait(5000) // menunggu selama 5 detik
     })
 
-    it('tidak ingin create class master mi category', () => {
+    it('create class master mi category berdasarkan default', () => {
       cy.get('.fi-sidebar-group-items > :nth-child(3) > .fi-sidebar-item-button', { timeout: 10000 }).contains('MI Category').click() // klik menu MI Category
       cy.contains('Categories') // mencari elemen yang berisi teks "Categories"
       cy.get('.fi-ac > .fi-btn').click() // klik tombol New class master mi category
       cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.get('.fi-color-custom').click() // klik tombol Create
       cy.wait(10000) // menunggu selama 10 detik
+      cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.wait(5000) // menunggu selama 5 detik
     })  
 
     it('create, edit, delete class master mi category', () => {
@@ -34,25 +38,29 @@ describe('mi category', () => {
       cy.wait(10000) // menunggu selama 10 detik
       cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Class Master Mi Categories
       cy.contains('Categories') // mencari elemen yang berisi teks "Categories"
+      cy.contains('People Smart').should('be.visible') // mencari elemen yang berisi teks "People Smart" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.wait(5000) // menunggu selama 5 detik
 
       // edit class master mi category
-      cy.get(':nth-child(9) > :nth-child(3) > .whitespace-nowrap > .fi-ta-actions > .fi-link').click() // klik tombol Edit pada mi category People Smart
+      cy.get(':nth-child(9) > :nth-child(3) > .whitespace-nowrap > .fi-ta-actions > .fi-link').click() // klik Edit pada mi category "People Smart"
       cy.contains('Edit').should('be.visible') // mencari elemen yang berisi teks "Edit" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
-      cy.get('input[id="data.name"]').clear().type('People Smart 2') // ubah Name dari "People Smart" ke "People Smart 2"
+      cy.get('input[id="data.name"]').clear().type('People Smart 2') // ubah Name dari "People Smart" menjadi "People Smart 2"
       cy.get('.fi-form-actions > .fi-ac > .fi-color-custom').click() // klik tombol Save changes
-      cy.wait(5000) // menunggu selama 5 detik
+      cy.wait(10000) // menunggu selama 10 detik
       cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Class Master Mi Categories
       cy.contains('Categories') // mencari elemen yang berisi teks "Categories"
+      cy.contains('People Smart 2').should('be.visible') // mencari elemen yang berisi teks "People Smart 2" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.wait(5000) // menunggu selama 5 detik
 
       // delete class master mi category
-      cy.get(':nth-child(9) > :nth-child(3) > .whitespace-nowrap > .fi-ta-actions > .fi-link').click() // klik tombol Edit pada mi category People Smart 2
+      cy.get(':nth-child(9) > :nth-child(3) > .whitespace-nowrap > .fi-ta-actions > .fi-link').click() // klik Edit pada mi category "People Smart 2"
       cy.contains('Edit').should('be.visible') // mencari elemen yang berisi teks "Edit" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.get('.fi-header > .fi-ac > .fi-btn').click() // klik tombol Delete
       cy.wait(10000) // menunggu selama 10 detik
       cy.contains('Delete').should('be.visible') // mencari elemen yang berisi teks "Delete" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm 
+      cy.wait(10000) // menunggu selama 10 detik
+      cy.contains('People Smart 2').should('not.exist') // memastikan tidak ada elemen yang mengandung teks "People Smart 2"
       cy.wait(5000) // menunggu selama 5 detik
   })
 })
