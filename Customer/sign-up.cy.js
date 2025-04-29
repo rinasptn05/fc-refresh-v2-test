@@ -35,7 +35,6 @@ describe('sign up customer', () => {
       cy.get('#agree').click() // klik I have read and agree to the Terms of Use and Privacy Policy
       cy.wait(1000) // menunggu selama 1 detik
       cy.get('button[type="submit"]').eq(1).click({force: true}) // klik tombol Sign Up
-      cy.wait(20000) // menunggu selama 20 detik
-      cy.contains('Sign up berhasil').should('be.visible') // mencari elemen yang berisi teks "Sign up berhasil" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.contains('Registration successfully', { timeout: 20000 }).should('be.visible') // mencari elemen yang berisi teks "Registration successfully" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
     })
 })

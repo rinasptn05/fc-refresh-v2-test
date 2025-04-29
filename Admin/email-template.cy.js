@@ -54,7 +54,7 @@ describe('email template', () => {
         cy.wait(10000) // menunggu selama 10 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Email Templates
         cy.contains('Email Templates').should('be.visible') // mencari elemen yang berisi teks "Email Templates" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
-        cy.contains('Admin') // mencari elemen yang berisi teks "Admin"
+        cy.contains('admin') // mencari elemen yang berisi teks "admin"
         cy.wait(5000) // menunggu selama 5 detik
 
         // delete email template

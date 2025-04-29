@@ -21,7 +21,7 @@ describe('locations', () => {
         cy.get('.fi-ac > .fi-btn').click() // klik tombol New location
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('.fi-color-custom').click() // klik tombol Create
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.wait(5000) // menunggu selama 5 detik
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
     })
@@ -78,14 +78,12 @@ describe('locations', () => {
 
         // cari location berdasarkan apa yang admin input1
         cy.get('input[id="input-1"]').type('abc') // input Search "abc"
-        cy.wait(10000) // menunggu selama 10 detik
-        cy.contains('No locations').should('be.visible') // mencari elemen yang berisi teks "No locations" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('No locations', { timeout: 20000 }).should('be.visible') // mencari elemen yang berisi teks "No locations" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
 
         // cari location berdasarkan apa yang admin input2
         cy.get('input[id="input-1"]').clear().type('yishun') // input Search "yishun"
-        cy.wait(10000) // menunggu selama 10 detik
-        cy.contains('Yishun').should('be.visible') // mencari elemen yang berisi teks "Yishun" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('Yishun', { timeout: 20000 }).should('be.visible') // mencari elemen yang berisi teks "Yishun" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
 
         // delete location

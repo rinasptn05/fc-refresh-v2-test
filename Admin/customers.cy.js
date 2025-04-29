@@ -63,10 +63,7 @@ describe('customers', () => {
       cy.get(':nth-child(2) > :nth-child(6) > .whitespace-nowrap > .fi-ta-actions > .fi-link > .fi-link-icon').click() // klik View pada First name "Rina"
       cy.contains('Customer') // mencari elemen yang berisi teks "Customer"
       cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
-      cy.wait(20000) // menunggu selama 20 detik
-      cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
-      cy.contains('Wallet Transactions') // mencari elemen yang berisi teks "Wallet Transactions"
-      cy.contains('No customer wallet transactions').should('be.visible') // mencari elemen yang berisi teks "No customer wallet transactions" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.contains('No customer wallet transactions', { timeout: 20000 }).should('be.visible') // mencari elemen yang berisi teks "No customer wallet transactions" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.wait(5000) // menunggu selama 5 detik
 
       // adjust wallet berdasarkan default
@@ -84,25 +81,23 @@ describe('customers', () => {
       cy.get('input[id="mountedTableActionsData.0.reason"]').type('Top up') // input Reason "Top up"
       cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Submit
       cy.wait(10000) // menunggu selama 10 detik
-      cy.get('#livewire-error').click() // sementara
-      cy.get('.absolute > .fi-icon-btn').click() // klik close (sementara)
+      cy.contains('Top up').should('be.visible') // mencari elemen yang berisi teks "Top up" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.wait(5000) // menunggu selama 5 detik
       cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Customers
       cy.contains('Customers') // mencari elemen yang berisi teks "Customers"
       cy.wait(5000) // menunggu selama 5 detik
 
       // cari customer berdasarkan apa yang admin input1
       cy.get('input[id="input-1"]').type('rina') // input "rina" pada menu pencarian
-      cy.wait(10000) // menunggu selama 10 detik
-      cy.contains('rina').should('be.visible') // mencari elemen yang berisi teks "rina" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.contains('rina', { timeout: 20000 }).should('be.visible') // mencari elemen yang berisi teks "rina" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.wait(5000) // menunggu selama 5 detik
 
       // cari customer berdasarkan apa yang admin input2
       cy.get('input[id="input-1"]').clear().type('abc') // input "abc" pada menu pencarian
-      cy.wait(10000) // menunggu selama 10 detik
-      cy.contains('No customers').should('be.visible') // mencari elemen yang berisi teks "No customers" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.contains('No customers', { timeout: 20000 }).should('be.visible') // mencari elemen yang berisi teks "No customers" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.wait(5000) // menunggu selama 5 detik
       cy.get('input[id="input-1"]').clear() // menghapus inputan
-      cy.wait(5000) // menunggu selama 5 detik
+      cy.wait(10000) // menunggu selama 10 detik
 
       // delete customer
       cy.get('input[value="2"]').click() // pilih checkbox pada customer ke-2

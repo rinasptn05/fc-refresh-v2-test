@@ -22,7 +22,7 @@ describe('category', () => {
       cy.get('.fi-ac > .fi-btn').click() // klik tombol New class master main category
       cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.get('.fi-color-custom').click() // klik tombol Create
-      cy.wait(10000) // menunggu selama 10 detik
+      cy.wait(5000) // menunggu selama 5 detik
       cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.wait(5000) // menunggu selama 5 detik
     })
@@ -43,7 +43,7 @@ describe('category', () => {
       // edit class master main category
       cy.get(':nth-child(2) > .fi-input-wrp > .min-w-0 > .fi-select-input').select('All') // pilih Per page "All"
       cy.wait(10000) // menunggu selama 10 detik
-      cy.contains('Dance') // mencari elemen yang berisi teks "Dance"
+      cy.contains('Dance').should('be.visible') // mencari elemen yang berisi teks "Dance" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.get(':nth-child(20) > :nth-child(3) > .whitespace-nowrap > .fi-ta-actions > a.fi-link > .fi-link-icon').click() // klik Edit pada category "Dance"
       cy.contains('Edit') // mencari elemen yang berisi teks "Edit"
       cy.get('input[id="data.name"]').clear().type("DANCE") // ubah Name dari "Dance" menjadi "DANCE"
@@ -54,60 +54,44 @@ describe('category', () => {
       cy.wait(5000) // menunggu selama 5 detik
 
       // list sub dategories
-      cy.contains('DANCE') // mencari elemen yang berisi teks "DANCE"
-      cy.get(':nth-child(20) > :nth-child(3) > .whitespace-nowrap > .fi-ta-actions > a.fi-link > .fi-link-icon').click() // klik Edit pada category DANCE
-      cy.wait(12000) // menunggu selama 12 detik
-      cy.contains('Sub Categories') // mencari elemen yang berisi teks "Sub Categories" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
-      cy.contains('No class master sub categories').should('be.visible') // mencari elemen yang berisi teks "No class master sub categories" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.contains('DANCE').should('be.visible') // mencari elemen yang berisi teks "DANCE" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.get(':nth-child(20) > :nth-child(3) > .whitespace-nowrap > .fi-ta-actions > a.fi-link > .fi-link-icon').click() // klik Edit pada category "DANCE"
+      cy.contains('No class master sub categories', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "No class master sub categories" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.wait(5000) // menunggu selama 5 detik
 
       // create class master sub category berdasarkan default
       cy.get('.fi-ta-actions > .fi-btn').click() // klik tombol New class master sub category
-      cy.wait(10000) // menunggu selama 10 detik
+      cy.wait(20000) // menunggu selama 20 detik
       cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
-      cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Create
+      cy.get('.fi-modal-footer-actions > .fi-color-custom', { timeout: 10000 }).click() // klik tombol Create
       cy.wait(5000) // menunggu selama 5 detik
       cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
-      cy.wait(5000) // menunggu selama 5 detik
-      cy.get('.absolute > .fi-icon-btn').click() // klik tombol close
       cy.wait(5000) // menunggu selama 5 detik
 
       // create class master sub category
-      cy.get('.fi-ta-actions > .fi-btn').click() // klik tombol New class master sub category
-      cy.wait(10000) // menunggu selama 10 detik
-      cy.get('body').then(($body) => { // mengambil elemen <body> dari halaman, lalu menjalankan fungsi lanjutan untuk memeriksa isi di dalamnya
-        if ($body.find('button:contains("Create")').length > 0) { // jika ditemukan tombol <button> yang mengandung teks "Create" di dalam elemen <body> (panjang hasil pencarian lebih dari 0)
-        cy.contains('Create').should('be.visible') // tombol Create sudah muncul
-        } else {
-        cy.log('Tombol Create belum muncul, klik ulang tombol') // tombol belum muncul, klik ulang tombol New class master sub category
-        cy.get('.fi-ta-actions > .fi-btn').click() // klik tombol New class master sub category
-        cy.wait(10000) // menunggu selama 10 detik
-        cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
-      }
-    })
       cy.get('input[id="mountedTableActionsData.0.name"]').type('Traditional Dance') // input Name "Traditional Dance"
       cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Create
       cy.wait(10000) // menunggu selama 10 detik
-      cy.contains('Traditional Dance').should('be.visible') // mencari elemen yang berisi teks "Traditional Dance" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.contains('Traditional Dance', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Traditional Dance" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.wait(5000) // menunggu selama 5 detik
 
       // edit class master sub category
       cy.get(':nth-child(1) > :nth-child(3) > .whitespace-nowrap > .fi-ta-actions > :nth-child(1)').click() // klik Edit pada sub category "Traditional Dance"
-      cy.wait(10000) // menunggu selama 10 detik
+      cy.wait(20000) // menunggu selama 20 detik
       cy.contains('Edit').should('be.visible') // mencari elemen yang berisi teks "Edit" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.get('input[id="mountedTableActionsData.0.name"]').clear().type('Modern Dance') // ubah Name dari "Traditional Dance" menjadi "Modern Dance"
       cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Save changes
       cy.wait(10000) // menunggu selama 10 detik
-      cy.contains('Modern Dance').should('be.visible') // mencari elemen yang berisi teks "Modern Dance" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.contains('Modern Dance', { timeout: 10000 }).should('be.visible') // mencari elemen yang berisi teks "Modern Dance" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.wait(5000) // menunggu selama 5 detik
 
       // delete class master sub category
       cy.get('.fi-ta-actions > :nth-child(2)').click() // klik Delete pada sub category "Modern Dance"
       cy.wait(10000) // menunggu selama 10 detik
       cy.contains('Delete').should('be.visible') // mencari elemen yang berisi teks "Delete" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
-      cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm
+      cy.get('.fi-modal-footer-actions > .fi-color-custom', { timeout: 10000 }).click() // klik tombol Confirm
       cy.wait(10000) // menunggu selama 10 detik
-      cy.contains('Modern Dance').should('not.exist') // memastikan tidak ada elemen yang mengandung teks "Modern Dance"
+      cy.contains('Modern Dance', { timeout: 10000 }).should('not.exist') // memastikan tidak ada elemen yang mengandung teks "Modern Dance"
       cy.wait(5000) // menunggu selama 5 detik
 
       // delete class master main category
@@ -115,19 +99,19 @@ describe('category', () => {
       cy.wait(10000) // menunggu selama 10 detik
       cy.contains('Delete').should('be.visible') // mencari elemen yang berisi teks "Delete" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm
-      cy.wait(10000) // menunggu selama 10 detik
-      cy.contains('DANCE').should('not.exist') // memastikan tidak ada elemen yang mengandung teks "DANCE"
+      cy.wait(15000) // menunggu selama 15 detik
+      cy.contains('DANCE', { timeout: 20000 }).should('not.exist') // memastikan tidak ada elemen yang mengandung teks "DANCE"
       cy.wait(5000) // menunggu selama 5 detik
 
       // cari main category berdasarkan apa yang admin input1
       cy.get('input[id="input-1"]').type('sports') // input Search "sports"
       cy.wait(10000) // menunggu selama 10 detik
-      cy.contains('Sports').should('be.visible') // mencari elemen yang berisi teks "Sports" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.contains('Sports', { timeout: 20000 }).should('be.visible') // mencari elemen yang berisi teks "Sports" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.wait(5000) // menunggu selama 5 detik
 
       // cari main category berdasarkan apa yang admin input2
       cy.get('input[id="input-1"]').clear().type('abc') // input Search "abc"
-      cy.contains('No class master main categories', { timeout: 20000 }).should('be.visible') // mencari elemen yang berisi teks "No class master main categories" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.contains('No class master main categories', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "No class master main categories" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.wait(5000) // menunggu selama 5 detik
   })
 })

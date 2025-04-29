@@ -37,7 +37,7 @@ describe('customer wallet transactions', () => {
       cy.get('input[id="data.amount"]').type('100') // input Amount "100"
       cy.get('input[id="data.reason"]').type('Top up') // input Reason "Top up"
       cy.get('.fi-color-custom').click() // klik tombol Create
-      cy.wait(10000) // menunggu selama 10 detik
+      cy.wait(15000) // menunggu selama 15 detik
       cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Customer Wallet Transactions
       cy.contains('Wallet') // mencari elemen yang berisi teks "Wallet"
       cy.wait(5000) // menunggu selama 5 detik
@@ -50,7 +50,7 @@ describe('customer wallet transactions', () => {
       cy.get('input[id="data.amount"]').type('50') // input Amount "50"
       cy.get('input[id="data.reason"]').type('Buy product') // input Reason "Buy product"
       cy.get('.fi-color-custom').click() // klik tombol Create
-      cy.wait(10000) // menunggu selama 10 detik
+      cy.wait(15000) // menunggu selama 15 detik
       cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Customer Wallet Transactions
       cy.contains('Wallet') // mencari elemen yang berisi teks "Wallet"
       cy.wait(5000) // menunggu selama 5 detik
@@ -78,20 +78,18 @@ describe('customer wallet transactions', () => {
       cy.get('input[id="data.amount"]').clear().type('70') // ubah Amount dari "50" menjadi "70"
       cy.get('.fi-form-actions > .fi-ac > .fi-color-custom').click() // klik tombol Save changes
       cy.wait(10000) // menunggu selama 10 detik
-      cy.get('#livewire-error').click() // sementara
       cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() //  klik Customer Wallet Transactions
       cy.contains('Wallet') // mencari elemen yang berisi teks "Wallet"
       cy.wait(5000) // menunggu selama 5 detik
       cy.get('div[class="choices__inner"]').click() // klik menu dropdown pada Customer Email
       cy.wait(10000) // menunggu selama 10 detik
       cy.get('div[id="choices--tableFilterscustomercustomer-item-choice-1"]').click() // pilih Customer Email "customer@gmail.com"
-      cy.wait(10000) // menunggu selama 10 detik
-      // cy.contains('70').should('be.visible') // mencari elemen yang berisi teks "70" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
-      // cy.wait(5000) // menunggu selama 5 detik
+      cy.contains('70', { timeout: 20000 }).should('be.visible') // mencari elemen yang berisi teks "70" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.wait(5000) // menunggu selama 5 detik
 
       // delete customer wallet transaction
       cy.get(':nth-child(2) > :nth-child(5) > .whitespace-nowrap > .fi-ta-actions > button.fi-link').click() // klik Delete pada Reason "Buy product"
-      cy.wait(5000) // menunggu selama 5 detik
+      cy.wait(10000) // menunggu selama 10 detik
       cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm
       cy.wait(10000) // menunggu selama 10 detik
       cy.contains('Buy product').should('not.exist') // memastikan tidak ada elemen yang mengandung teks "Buy product"

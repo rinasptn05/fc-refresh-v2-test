@@ -39,6 +39,8 @@ describe('booking report by entry', () => {
         cy.get('div[id="choices--tableFiltersidpartner_id-item-choice-1"]').click() // pilih filter Organization "PT Kunci"
         cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
         cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Soccer for kid').should('be.visible') // mencari elemen yang berisi teks "Soccer for kid" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.wait(5000) // menunggu selama 5 detik
 
         // filter Entry
         cy.get('div[class="choices__inner"]').eq(1).click() // klik menu dropdown pada Entry
@@ -46,11 +48,14 @@ describe('booking report by entry', () => {
         cy.get('div[id="choices--tableFiltersidid-item-choice-1"]').click() // pilih filter Entry "Soccer for kid"
         cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
         cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Soccer for kid') // mencari elemen yang berisi teks "Soccer for kid"
+        cy.wait(5000) // menunggu selama 5 detik
 
         // lihat detail / view booking report by entry
         cy.get('.fi-ta-actions > .fi-link').click() // klik View pada Name "Soccer for kid"
         cy.contains('View').should('be.visible') // mencari elemen yang berisi teks "View" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
+        cy.contains('FLCP000001').should('be.visible') // mencari elemen yang berisi teks "FLCP000001" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Booking Report By Entries
         cy.contains('Entries') // mencari elemen yang berisi teks "Entries"
@@ -67,12 +72,16 @@ describe('booking report by entry', () => {
             cy.get('input[id="tableFilters.id.end_date"]').type('2030-01-21') // input End Date "2030-01-21"
             cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
             cy.wait(10000) // menunggu selama 10 detik
+            cy.contains('Soccer for kid').should('be.visible') // mencari elemen yang berisi teks "Soccer for kid" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+            cy.wait(5000) // menunggu selama 5 detik
 
             // date2
             cy.get('input[id="tableFilters.id.start_date"]').clear().type('2040-01-01') // input Start Date "2040-01-01"
             cy.get('input[id="tableFilters.id.end_date"]').clear().type('2040-01-21') // input End Date "2040-01-21"
             cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
             cy.wait(15000) // menunggu selama 15 detik
+            cy.contains('No Booking Report By Entries').should('be.visible') // mencari elemen yang berisi teks "No Booking Report By Entries" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+            cy.wait(5000) // menunggu selama 5 detik
 
         // filter Time
             // time1
@@ -87,12 +96,16 @@ describe('booking report by entry', () => {
             cy.get('input[id="tableFilters.id.end_time"]').type('12:00:00') // input End time "12:00:00"
             cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
             cy.wait(10000) // menunggu selama 10 detik
+            cy.contains('No Booking Report By Entries').should('be.visible') // mencari elemen yang berisi teks "No Booking Report By Entries" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+            cy.wait(5000) // menunggu selama 5 detik
 
             // time2
             cy.get('input[id="tableFilters.id.start_time"]').clear().type('15:00:00') // input Start time "15:00:00"
             cy.get('input[id="tableFilters.id.end_time"]').clear().type('18:00:00') // input End time "18:00:00"
             cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
             cy.wait(15000) // menunggu selama 15 detik
+            cy.contains('Soccer for kid').should('be.visible') // mencari elemen yang berisi teks "Soccer for kid" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+            cy.wait(5000) // menunggu selama 5 detik
         
         // filter Organization, Entry, Date, dan Time
             // organization, entry, date, dan time1
@@ -117,6 +130,8 @@ describe('booking report by entry', () => {
             cy.get('input[id="tableFilters.id.end_time"]').clear().type('18:00:00') // input End time "18:00:00"
             cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
             cy.wait(15000) // menunggu selama 15 detik
+            cy.contains('Soccer for kid') // mencari elemen yang berisi teks "Soccer for kid"
+            cy.wait(5000) // menunggu selama 5 detik
 
             // organization, entry, date, dan time2
             cy.get('.fi-ta-filters > :nth-child(1) > .fi-link > .font-semibold').click() // klik Reset
@@ -140,6 +155,8 @@ describe('booking report by entry', () => {
             cy.get('input[id="tableFilters.id.end_time"]').type('12:00:00') // input End time "12:00:00"
             cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
             cy.wait(10000) // menunggu selama 10 detik
+            cy.contains('No Booking Report By Entries').should('be.visible') // mencari elemen yang berisi teks "No Booking Report By Entries" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+            cy.wait(5000) // menunggu selama 5 detik
     })
 
     it('show archived booking report by entry', () => {
