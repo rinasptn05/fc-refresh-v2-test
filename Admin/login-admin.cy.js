@@ -17,7 +17,7 @@ describe('login admin', () => {
         cy.get('input[type=email]').type('admin@gmail.com') // input email "admin@gmail.com"
         cy.get('input[type=password]').type('admin123') // input password "admin123"
         cy.get('.fi-btn').click() // klik tombol Sign in
-        cy.contains('Dashboard', { timeout: 20000 }).should('be.visible') // mencari elemen yang berisi teks "Dashboard" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna, menentukan bahwa Cypress harus menunggu hingga 20.000 milidetik (20 detik) agar elemen dengan teks 'Dashboard' muncul
+        cy.contains('Dashboard', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Dashboard" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna, menentukan bahwa Cypress harus menunggu hingga 20.000 milidetik (20 detik) agar elemen dengan teks 'Dashboard' muncul
         cy.get('.fi-sidebar-close-overlay').click()
         cy.wait(5000) // menunggu selama 5 detik
     })

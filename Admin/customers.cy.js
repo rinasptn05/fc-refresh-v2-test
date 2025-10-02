@@ -83,6 +83,17 @@ describe('customers', () => {
       cy.wait(10000) // menunggu selama 10 detik
       cy.contains('Top up').should('be.visible') // mencari elemen yang berisi teks "Top up" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.wait(5000) // menunggu selama 5 detik
+
+      // delete wallet transaction
+      cy.get('.fi-ta-row > .w-1 > .px-3 > .flex > .fi-checkbox-input').click() // klik checkbox
+      cy.get('.fi-dropdown-trigger > .fi-btn').click() // klik tombol Bulk actions
+      cy.get('.fi-dropdown-list > .fi-dropdown-list-item').click() // klik tombol Delete selected
+      cy.wait(5000) // menunggu selama 5 detik
+      cy.contains('Delete') // mencari elemen yang berisi teks "Delete"
+      cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm
+      cy.wait(10000) // menunggu selama 10 detik
+      cy.contains('Top up').should('not.exist') // memastikan tidak ada elemen yang mengandung teks "Top up"
+      cy.wait(5000) // menunggu selama 5 detik
       cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Customers
       cy.contains('Customers') // mencari elemen yang berisi teks "Customers"
       cy.wait(5000) // menunggu selama 5 detik
