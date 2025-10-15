@@ -21,7 +21,7 @@ describe('campaign tag', () => {
         cy.get('.fi-ac > .fi-btn').click() // klik tombol New class master campaign tag
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('.fi-color-custom').click() // klik tombol Create
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.wait(5000) // menunggu selama 5 detik
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
     })
@@ -35,7 +35,7 @@ describe('campaign tag', () => {
         cy.get('input[id="data.name"]').type('Promotion 2') // input Name "Promotion 2"
         cy.get('select[id="data.type"]').select('Campaign') // pilih Type "Campaign"
         cy.get('.fi-color-custom').click() // klik tombol Create
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Created', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Created" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Class Master Campaign Tags
         cy.contains('Campaign Tags').should('be.visible') // mencari elemen yang berisi teks "Campaign Tags" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.contains('Promotion 2').should('be.visible') // mencari elemen yang berisi teks "Promotion 2" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
@@ -46,7 +46,7 @@ describe('campaign tag', () => {
         cy.contains('Edit').should('be.visible') // mencari elemen yang berisi teks "Edit" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('input[id="data.name"]').clear().type('Promotion 3') // ubah Name dari "Promotion 2" menjadi "Promotion 3"
         cy.get('.fi-form-actions > .fi-ac > .fi-color-custom').click() // klik tombol Save changes
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Saved', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Saved" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Class Master Campaign Tags
         cy.contains('Campaign Tags').should('be.visible') // mencari elemen yang berisi teks "Campaign Tags" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
@@ -55,10 +55,9 @@ describe('campaign tag', () => {
 
         // delete class master campaign tag
         cy.get(':nth-child(2) > :nth-child(4) > .whitespace-nowrap > .fi-ta-actions > button.fi-link').click() // klik Delete pada Name "Promotion 3"
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Are you sure you would like to do this?', { timeout: 30000 }) // mencari elemen yang berisi teks "Are you sure you would like to do this?" 
         cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Deleted', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Deleted" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.contains('Promotion 3').should('not.exist') // memastikan tidak ada elemen yang mengandung teks "Promotion 3"
-        cy.wait(5000) // menunggu selama 5 detik
     })
 })

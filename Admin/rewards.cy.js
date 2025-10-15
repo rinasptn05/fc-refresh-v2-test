@@ -27,7 +27,7 @@ describe('rewards', () => {
         cy.get('input[id="data.name"]').type('Education') // input Name "Education"
         cy.get('select[id="data.type"]').select('CompassPoint Reward') // pilih Type "CompassPoint Reward"
         cy.get('.fi-color-custom').click() // klik tombol Create
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Created', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Created" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Reward Categories
         cy.contains('Reward') // mencari elemen yang berisi teks "Reward"
         cy.wait(5000) // menunggu selama 5 detik
@@ -40,7 +40,7 @@ describe('rewards', () => {
         cy.get('input[id="data.name"]').type('Activities') // input Name "Activities"
         cy.get('select[id="data.type"]').select('Flying Cape App Reward') // pilih Type "Flying Cape App Reward"
         cy.get('.fi-color-custom').click() // klik tombol Create
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Created', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Created" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Reward Categories
         cy.contains('Reward') // mencari elemen yang berisi teks "Reward"
         cy.wait(5000) // menunggu selama 5 detik
@@ -56,7 +56,7 @@ describe('rewards', () => {
         cy.get('input[id="data.name"]').type('Reward') // input Name "Reward"
         cy.wait(10000) // menunggu selama 10 detik
         cy.get('select[id="data.reward_category_id"]').select('Education') // pilih Reward category id "Education"
-        cy.get('input[id="data.compass_point"]').type('0') // input Compass point "0"
+        cy.get('input[id="data.compass_point"]').type('10') // input Compass point "10"
         cy.get('input[id="data.limit_value"]').type('0') // input Limit value "0"
         cy.get('input[id="data.value_at"]').type('1') // input Value at "1"
         cy.get('input[id="data.start_date"]').type('2025-12-20') // input Start date "2025-12-20"
@@ -69,7 +69,7 @@ describe('rewards', () => {
         cy.get('trix-editor[id="data.promotion_shout_out"]').type('Promotion shout out') // input Promotion shout out "Promotion shout out"
         cy.wait(5000) // menunggu selama 5 detik
         cy.get('.fi-color-custom').click() // klik tombol Create
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Created', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Created" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Rewards
         cy.contains('Create') // mencari elemen yang berisi teks "Create"
         cy.wait(5000) // menunggu selama 5 detik
@@ -92,24 +92,24 @@ describe('rewards', () => {
         cy.get('trix-editor[id="data.promotion_shout_out"]').type('Promotion shout out') // input Promotion shout out "Promotion shout out"
         cy.wait(5000) // menunggu selama 5 detik
         cy.get('.fi-color-custom').click() // klik tombol Create
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Created', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Created" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.contains('Edit').should('be.visible') // mencari elemen yang berisi teks "Edit" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
 
         // edit reward
         cy.get('select[id="data.type"]').select('Flying Cape App Reward') // pilih Type "Flying Cape App Reward"
-        cy.wait(15000) // menunggu selama 15 detik
+        cy.contains('Scenario', { timeout: 30000 }) // mencari elemen yang berisi teks "Scenario"
         cy.get('select[id="data.reward_category_id"]').select('Activities') // pilih Reward category id "Activities"
         cy.get('input[id="data.scenario-none"]').click() // pilih Scenario "No Pin Number / No Voucher"
         cy.get('input[id="data.location"]').clear().type('East') // ubah Location dari "West" menjadi "East"
         cy.get('.fi-form-actions > .fi-ac > .fi-color-custom').click() // klik tombol Save changes
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Saved', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Saved" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
 
         // delete reward
         cy.get('.fi-header > .fi-ac > .fi-btn').click() // klik tombol Delete
-        cy.wait(10000) // menunggu selama 10 detik
-        cy.contains('Delete') // mencari elemen yang berisi teks "Delete"        
+        cy.contains('Are you sure you would like to do this?', { timeout: 30000 }) // mencari elemen yang berisi teks "Are you sure you would like to do this?"        
         cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Deleted', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Deleted" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
+        cy.contains('Create', { timeout: 30000 }) // mencari elemen yang berisi teks "Create"
     })
 })

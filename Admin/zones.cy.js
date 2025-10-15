@@ -35,7 +35,7 @@ describe('zones', () => {
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('input[id="data.name"]').type('South') // input Name "South"
         cy.get('.fi-color-custom').click() // klik tombol Create
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Created', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Created" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Zones
         cy.contains('Zones') // mencari elemen yang berisi teks "Zones"
         cy.contains('South').should('be.visible') // mencari elemen yang berisi teks "South" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
@@ -46,7 +46,7 @@ describe('zones', () => {
         cy.contains('Edit').should('be.visible') // mencari elemen yang berisi teks "Edit" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('input[id="data.name"]').clear().type('South-East') // ubah Name dari "South" menjadi "South-East"
         cy.get('.fi-form-actions > .fi-ac > .fi-color-custom').click() // klik tombol Save changes
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Saved', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Saved" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Zones
         cy.contains('Zones') // mencari elemen yang berisi teks "Zones"
         cy.contains('South-East').should('be.visible') // mencari elemen yang berisi teks "South-East" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
@@ -54,23 +54,20 @@ describe('zones', () => {
 
         // delete zone
         cy.get(':nth-child(7) > :nth-child(3) > .whitespace-nowrap > .fi-ta-actions > button.fi-link').click() // klik Delete pada Name "South-East"
-        cy.wait(10000) // menunggu selama 10 detik
-        cy.contains('Delete') // mencari elemen yang berisi teks "Delete"
+        cy.contains('Are you sure you would like to do this?', { timeout: 30000 }) // mencari elemen yang berisi teks "Are you sure you would like to do this?"
         cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm
-        cy.wait(15000) // menunggu selama 15 detik
-        cy.contains('South-East').should('not.exist') // memastikan tidak ada elemen yang mengandung teks "South-East"
+        cy.contains('Deleted', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Deleted" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
+        cy.contains('South-East', { timeout: 30000 }).should('not.exist') // memastikan tidak ada elemen yang mengandung teks "South-East"
         cy.wait(5000) // menunggu selama 5 detik
 
         // cari zone berdasarkan apa yang admin input1
         cy.get('input[id="input-1"]').type('abc') // input Search "abc"
-        cy.wait(15000) // menunggu selama 15 detik
-        cy.contains('No zones').should('be.visible') // mencari elemen yang berisi teks "No zones" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('No zones', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "No zones" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
 
         // cari zone berdasarkan apa yang admin input2
         cy.get('input[id="input-1"]').clear().type('north') // input Search "north"
-        cy.wait(10000) // menunggu selama 10 detik
-        cy.contains('North').should('be.visible') // mencari elemen yang berisi teks "North" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('North', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "North" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik        
     })
 })

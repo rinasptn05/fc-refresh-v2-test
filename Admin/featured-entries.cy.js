@@ -36,14 +36,12 @@ describe('featured entries', () => {
 
         // cari entry berdasarkan apa yang admin input1
         cy.get('input[id="input-1"]').type('abc') // input Search "abc"
-        cy.wait(10000) // menunggu selama 10 detik
-        cy.contains('No class basic informations').should('be.visible') // mencari elemen yang berisi teks "No class basic informations" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('No class basic informations', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "No class basic informations" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
 
         // cari entry berdasarkan apa yang admin input2
         cy.get('input[id="input-1"]').clear().type('soccer') // input Search "soccer"
-        cy.wait(10000) // menunggu selama 10 detik
-        cy.contains('Soccer').should('be.visible') // mencari elemen yang berisi teks "Soccer" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('Soccer', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Soccer" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
     })
 })

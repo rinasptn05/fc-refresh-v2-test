@@ -41,7 +41,7 @@ describe('partner user accounts', () => {
         cy.get('select[id="data.is_active"]').select('Active') // pilih Is active "Active"
         cy.get('input[id="data.is_scanner_user-0"]').check() // pilih Is scanner user "No"
         cy.get('.fi-color-custom').click() // klik tombol Create
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Created', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Created" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Users
         cy.contains('Users').should('be.visible') // mencari elemen yang berisi teks "Users" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.contains('user@gmail.com').should('be.visible') // mencari elemen yang berisi teks "user@gmail.com" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
@@ -53,7 +53,7 @@ describe('partner user accounts', () => {
         cy.get('input[id="data.email"]').clear().type('user01@gmail.com') // ubah Email dari "user@gmail.com" menjadi "user01@gmail.com"
         cy.get('input[id="data.password"]').type('user12345') // input Password "user12345"
         cy.get('.fi-form-actions > .fi-ac > .fi-color-custom').click() // klik tombol Save changes
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Saved', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Saved" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Users
         cy.contains('Users').should('be.visible') // mencari elemen yang berisi teks "Users" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.contains('user01@gmail.com').should('be.visible') // mencari elemen yang berisi teks "user01@gmail.com" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
@@ -65,11 +65,9 @@ describe('partner user accounts', () => {
         
         // delete user
         cy.get(':nth-child(2) > :nth-child(6) > .whitespace-nowrap > .fi-ta-actions > button.fi-link > [viewBox="0 0 20 20"]').click() // klik Delete pada Account "user01@gmail.com"
-        cy.wait(10000) // menunggu selama 10 detik
-        cy.contains('Delete') // mencari elemen yang berisi teks "Delete"     
+        cy.contains('Are you sure you would like to do this?', { timeout: 30000 }) // mencari elemen yang berisi teks "Are you sure you would like to do this?"     
         cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Deleted', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Deleted" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.contains('user01@gmail.com').should('not.exist') // memastikan tidak ada elemen yang mengandung teks "user01@gmail.com"
-        cy.wait(5000) // menunggu selama 5 detik
     })
 })

@@ -34,7 +34,7 @@ describe('sub tag', () => {
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('input[id="data.name"]').type('Sports') // input Name "Sports"
         cy.get('.fi-color-custom').click() // klik tombol Create
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Created', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Created" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Class Master Sub Tags
         cy.contains('Sub Tags').should('be.visible') // mencari elemen yang berisi teks "Sub Tags" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.contains('Sports').should('be.visible') // mencari elemen yang berisi teks "Sports" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
@@ -45,7 +45,7 @@ describe('sub tag', () => {
         cy.contains('Edit').should('be.visible') // mencari elemen yang berisi teks "Edit" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('input[id="data.name"]').clear().type('Arts') // ubah Name dari "Sports" menjadi "Arts"
         cy.get('.fi-form-actions > .fi-ac > .fi-color-custom').click() // klik tombol Save changes
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Saved', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Saved" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Class Master Sub Tags
         cy.contains('Sub Tags').should('be.visible') // mencari elemen yang berisi teks "Sub Tags" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.contains('Arts').should('be.visible') // mencari elemen yang berisi teks "Arts" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
@@ -55,11 +55,9 @@ describe('sub tag', () => {
         cy.get(':nth-child(2) > :nth-child(3) > .whitespace-nowrap > .fi-ta-actions > .fi-link').click() // klik Edit pada sub tag "Arts"
         cy.contains('Edit').should('be.visible') // mencari elemen yang berisi teks "Edit" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('.fi-header > .fi-ac > .fi-btn').click() // klik tombol Delete
-        cy.wait(10000) // menunggu selama 10 detik
-        cy.contains('Delete').should('be.visible') // mencari elemen yang berisi teks "Delete" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('Are you sure you would like to do this?', { timeout: 30000 }) // mencari elemen yang berisi teks "Are you sure you would like to do this?" 
         cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Deleted', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Deleted" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.contains('Arts').should('not.exist') // memastikan tidak ada elemen yang mengandung teks "Arts"
-        cy.wait(5000) // menunggu selama 5 detik
     })
 })

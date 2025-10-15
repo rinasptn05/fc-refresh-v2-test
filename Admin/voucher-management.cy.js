@@ -44,16 +44,16 @@ describe('voucher management', () => {
         cy.get('input[id="data.limit_button-1"]').click() // pilih Maximum Voucher "Yes"
         cy.get('input[id="data.usage_limit"]').type('5', {force: true}) // input User Limit "5"
         cy.get('div[class="choices__inner"]').eq(0).click() // klik pada Select Partner
-        cy.wait(20000) // menunggu selama 20 detik
+        cy.contains('PT Kunci', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "PT Kunci" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get('div[id="choices--datapartner_id-item-choice-1"]').click() // pilih Assign To Partner "PT Kunci"
         cy.get('div[class="choices__inner"]').eq(1).click() // klik pada Select User
-        cy.wait(20000) // menunggu selama 20 detik
+        cy.contains('partner', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "partner" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get('div[id="choices--datauser_id-item-choice-2"]').click() // pilih Assign To User "partner"
         cy.get('div[class="choices__inner"]').eq(2).click() // klik pada Select User
-        cy.wait(20000) // menunggu selama 20 detik
+        cy.contains('Promotion', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Promotion" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get('div[id="choices--dataclass_master_campaign_tag_id-item-choice-1"]').click() // pilih Assign To Tag "Promotion"
         cy.get('.fi-ac > .fi-color-custom').click() // klik tombol Create
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Created', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Created" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
 
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Vouchers
         cy.contains('Vouchers') // mencari elemen yang berisi teks "Vouchers"
@@ -65,7 +65,7 @@ describe('voucher management', () => {
         cy.contains('Edit').should('be.visible') // mencari elemen yang berisi teks "Edit" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('input[id="data.code"]').clear().type('SPTN') // ubah Voucher Code dari "RNSPT" menjadi "SPTN"
         cy.get('.fi-form-actions > .fi-ac > .fi-color-custom').click() // klik tombol Save changes
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Saved', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Saved" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Vouchers
         cy.contains('Vouchers') // mencari elemen yang berisi teks "Vouchers"
         cy.wait(5000) // menunggu selama 5 detik
@@ -74,11 +74,9 @@ describe('voucher management', () => {
 
         // delete voucher
         cy.get('.fi-ta-actions > button.fi-link').click() // klik Delete pada Code "SPTN"
-        cy.wait(10000) // menunggu selama 5 detik
-        cy.contains('Delete') // mencari elemen yang berisi teks "Delete"
+        cy.contains('Are you sure you would like to do this?', { timeout: 30000 }) // mencari elemen yang berisi teks "Are you sure you would like to do this?" 
         cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm 
-        cy.wait(10000) // menunggu selama 5 detik
+        cy.contains('Deleted', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Deleted" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.contains('SPTN').should('not.exist') // memastikan tidak ada elemen yang mengandung teks "SPTN"
-        cy.wait(5000) // menunggu selama 5 detik
       })
 })

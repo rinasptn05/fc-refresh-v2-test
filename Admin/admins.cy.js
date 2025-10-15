@@ -36,15 +36,15 @@ describe('admins', () => {
 
         const filePath = 'admins.jpg' // path relatif dari file di dalam folder fixtures
         cy.get('input[type="file"]').attachFile(filePath) // pilih input file / klik Browse dan lampirkan file
-        cy.wait(30000) // menunggu selama 30 detik
+        cy.contains('Upload complete', { timeout: 100000 }) // mencari elemen yang berisi teks "Upload complete"
 
         cy.get('input[id="data.name"]').type('rina') // isi Name "rina"
         cy.get(':nth-child(2) > .fi-fo-field-wrp > :nth-child(1)').type('rina@gmail.com') // isi Email "rina@gmail.com"
         cy.get(':nth-child(4) > .fi-fo-field-wrp > :nth-child(1)').type('rina123') // isi Password "rina123"
         cy.get('select[id="data.is_active"]').select('Active') // pilih Status "Active"
-        cy.wait(5000) // menunggu selama 5 detik
+        cy.wait(1000) // menunggu selama 1 detik
         cy.get('.fi-ac > .fi-color-custom').click() // klik tombol Create
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Created', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Created" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Users
         cy.contains('Users').should('be.visible') // mencari elemen yang berisi teks "Users" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.contains('rina').should('be.visible') // mencari elemen yang berisi teks "rina" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
@@ -56,7 +56,7 @@ describe('admins', () => {
         cy.get('input[id="data.email"]').clear().type('rinaseptiani@gmail.com') // ubah Email dari "rina@gmail.com" menjadi "rinaseptiani@gmail.com"
         cy.wait(5000) // menunggu selama 5 detik
         cy.get('.fi-form-actions > .fi-ac > .fi-color-custom').click() // klik tombol Save changes
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Saved', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Saved" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Users
         cy.contains('Users').should('be.visible') // mencari elemen yang berisi teks "Users" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.contains('rinaseptiani@gmail.com').should('be.visible') // mencari elemen yang berisi teks "rinaseptiani@gmail.com" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
@@ -64,10 +64,9 @@ describe('admins', () => {
         
         // delete user
         cy.get(':nth-child(2) > :nth-child(6) > .whitespace-nowrap > .fi-ta-actions > button.fi-link').click() // klik Delete pada Name "rina"
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Are you sure you would like to do this?', { timeout: 30000 }) // mencari elemen yang berisi teks "Are you sure you would like to do this?" 
         cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Deleted', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Deleted" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.contains('rina').should('not.exist') // memastikan tidak ada elemen yang mengandung teks "rina"
-        cy.wait(5000) // menunggu selama 5 detik
     })
 })

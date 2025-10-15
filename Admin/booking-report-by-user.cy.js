@@ -35,14 +35,13 @@ describe('booking report by user', () => {
         cy.wait(5000) // menunggu selama 5 detik
 
         cy.get('div[class="choices__inner"]').click() // klik menu dropdown pada User
-        cy.wait(5000) // menunggu selama 5 detik
+        cy.contains('customer@gmail.com', { timeout: 30000 }).should('be.visible')
         cy.get('div[id="choices--user_id-item-choice-1"]').click() // pilih User "customer@gmail.com"
         cy.wait(10000) // menunggu selama 10 detik
 
         // lihat detail / view booking report by user
         cy.get('.fi-ta-actions > .fi-link').click() // klik View pada Entry Name "Soccer for kid"
-        cy.wait(10000) // menunggu selama 10 detik
-        cy.contains('View').should('be.visible') // mencari elemen yang berisi teks "View" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('View Booking Report By User', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "View" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
         cy.get('.fi-btn').click() // klik tombol Close
         cy.wait(5000) // menunggu selama 5 detik

@@ -51,15 +51,14 @@ describe('transaction reports', () => {
 
             // payment mode2
             cy.get('select[id="tableFilters.payment_mode.value"]').select('Visa') // pilih Payment mode "Visa"
-            cy.wait(10000) // menunggu selama 10 detik
             cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
-            cy.contains('No transaction reports').should('be.visible') // mencari elemen yang berisi teks "No transaction reports" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+            cy.contains('No transaction reports', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "No transaction reports" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
             cy.wait(5000) // menunggu selama 5 detik
         
         // filter Source
             // source1
             cy.get('.fi-link > .font-semibold').click() // klik Reset
-            cy.wait(15000) // menunggu selama 15 detik
+            cy.wait(10000) // menunggu selama 10 detik
             cy.get('select[id="tableFilters.source.value"]').select('FC') // pilih Source "FC"
             cy.wait(10000) // menunggu selama 10 detik
             cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
@@ -68,19 +67,17 @@ describe('transaction reports', () => {
 
             // source2
             cy.get('select[id="tableFilters.source.value"]').select('Time') // pilih Source "Time"
-            cy.wait(10000) // menunggu selama 10 detik
             cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
-            cy.wait(5000) // menunggu selama 5 detik
-            cy.contains('No transaction reports').should('be.visible') // mencari elemen yang berisi teks "No transaction reports" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+            cy.contains('No transaction reports', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "No transaction reports" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
             cy.wait(5000) // menunggu selama 5 detik
         
         // filter Date
             // date1
             cy.get('.fi-link > .font-semibold').click() // klik Reset
-            cy.wait(15000) // menunggu selama 15 detik
+            cy.wait(10000) // menunggu selama 10 detik
             cy.get('input[id="tableFilters.booking_date.start_date"]').type('2025-12-20') // input Start Date "2025-12-20"
             cy.get('input[id="tableFilters.booking_date.end_date"]').type('2025-12-30') // input End Date "2025-12-30"
-            cy.wait(10000) // menunggu selama 10 detik
+            cy.wait(5000) // menunggu selama 5 detik
             cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
             cy.get('.fi-ta-content').contains('Soccer for kid') // mencari elemen yang berisi teks "Soccer for kid"
             cy.wait(5000) // menunggu selama 5 detik
@@ -88,49 +85,46 @@ describe('transaction reports', () => {
             // date2
             cy.get('input[id="tableFilters.booking_date.start_date"]').type('2025-11-20') // input Start Date "2025-11-20"
             cy.get('input[id="tableFilters.booking_date.end_date"]').type('2025-11-30') // input End Date "2025-11-30"
-            cy.wait(10000) // menunggu selama 10 detik
             cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
-            cy.contains('No transaction reports').should('be.visible') // mencari elemen yang berisi teks "No transaction reports" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+            cy.contains('No transaction reports', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "No transaction reports" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
             cy.wait(5000) // menunggu selama 5 detik
         
         // filter Payment mode, Source, dan Date
             // payment mode, source, dan date1
             cy.get('.fi-link > .font-semibold').click() // klik Reset
-            cy.wait(15000) // menunggu selama 15 detik
+            cy.wait(10000) // menunggu selama 10 detik
             cy.get('select[id="tableFilters.payment_mode.value"]').select('Master Card') // pilih Payment mode "Master Card"
             cy.get('select[id="tableFilters.source.value"]').select('FC') // pilih Source "FC"
             cy.get('input[id="tableFilters.booking_date.start_date"]').type('2025-12-20') // input Start Date "2025-12-20"
             cy.get('input[id="tableFilters.booking_date.end_date"]').type('2025-12-30') // input End Date "2025-12-30"
-            cy.wait(10000) // menunggu selama 10 detik
+            cy.wait(5000) // menunggu selama 5 detik
             cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
             cy.get('.fi-ta-content').contains('Soccer for kid') // mencari elemen yang berisi teks "Soccer for kid"
             cy.wait(5000) // menunggu selama 5 detik
 
             // payment mode, source, dan date2
             cy.get('.fi-link > .font-semibold').click() // klik Reset
-            cy.wait(15000) // menunggu selama 15 detik
+            cy.wait(10000) // menunggu selama 10 detik
             cy.get('select[id="tableFilters.payment_mode.value"]').select('Visa') // pilih Payment mode "Visa"
             cy.get('select[id="tableFilters.source.value"]').select('Time') // pilih Source "Time"
             cy.get('input[id="tableFilters.booking_date.start_date"]').type('2025-11-20') // input Start Date "2025-11-20"
             cy.get('input[id="tableFilters.booking_date.end_date"]').type('2025-11-30') // input End Date "2025-11-30"
-            cy.wait(10000) // menunggu selama 10 detik
             cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
-            cy.contains('No transaction reports').should('be.visible') // mencari elemen yang berisi teks "No transaction reports" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+            cy.contains('No transaction reports', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "No transaction reports" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
             cy.wait(5000) // menunggu selama 5 detik
 
         // search berdasarkan apa yang admin input
             // search1
             cy.get('.fi-link > .font-semibold').click() // klik Reset
-            cy.wait(15000) // menunggu selama 15 detik
+            cy.wait(10000) // menunggu selama 10 detik
             cy.get('input[id="input-1"]').type('soccer') // input Search "soccer"
-            cy.wait(5000) // menunggu selama 5 detik
-            cy.get('.fi-ta-content').contains('Soccer for kid') // mencari elemen yang berisi teks "Soccer for kid"
+            cy.wait(10000) // menunggu selama 10 detik
+            cy.get('.fi-ta-content').contains('Soccer for kid',) // mencari elemen yang berisi teks "Soccer for kid"
             cy.wait(5000) // menunggu selama 5 detik
 
             // search2
             cy.get('input[id="input-1"]').clear().type('abc') // input Search "abc"
-            cy.wait(10000) // menunggu selama 10 detik
-            cy.contains('No transaction reports').should('be.visible') // mencari elemen yang berisi teks "No transaction reports" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+            cy.contains('No transaction reports', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "No transaction reports" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
             cy.wait(5000) // menunggu selama 5 detik
     })
 })

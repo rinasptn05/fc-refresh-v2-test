@@ -40,7 +40,7 @@ describe('email template', () => {
         cy.get('button[id="data.is_system"]').click() // klik tombol on pada Email Type (Is System)
         cy.get('trix-editor[id="data.description"]').type('New email template') // isi Description "New email template"
         cy.get('.fi-ac > .fi-color-custom').click() // klik tombol Create
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Created', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Created" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Email Templates
         cy.contains('Email Templates').should('be.visible') // mencari elemen yang berisi teks "Email Templates" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.contains('user@gmail.com').should('be.visible') // mencari elemen yang berisi teks "user@gmail.com" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
@@ -51,7 +51,7 @@ describe('email template', () => {
         cy.contains('Edit').should('be.visible') // mencari elemen yang berisi teks "Edit" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('select[id="data.project"]').select('Admin') // ubah Project dari "Agent" menjadi "Admin"
         cy.get('.fi-form-actions > .fi-ac > .fi-color-custom').click() // klik tombol Save changes
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Saved', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Saved" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Email Templates
         cy.contains('Email Templates').should('be.visible') // mencari elemen yang berisi teks "Email Templates" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.contains('admin') // mencari elemen yang berisi teks "admin"
@@ -61,11 +61,9 @@ describe('email template', () => {
         cy.get(':nth-child(1) > :nth-child(6) > .whitespace-nowrap > .fi-ta-actions > .fi-link > .fi-link-icon').click() // klik Edit pada email template Project "admin"
         cy.contains('Edit').should('be.visible') // mencari elemen yang berisi teks "Edit" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('.fi-header > .fi-ac > .fi-btn').click() // klik tombol Delete
-        cy.wait(5000) // menunggu selama 5 detik
-        cy.contains('Delete').should('be.visible') // mencari elemen yang berisi teks "Delete" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('Are you sure you would like to do this?', { timeout: 30000 }) // mencari elemen yang berisi teks "Are you sure you would like to do this?" 
         cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Deleted', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Deleted" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.contains('user@gmail.com').should('not.exist') // memastikan tidak ada elemen yang mengandung teks "user@gmail.com"
-        cy.wait(5000) // menunggu selama 5 detik
     })
 })

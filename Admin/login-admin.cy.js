@@ -8,7 +8,7 @@ describe('login admin', () => {
         cy.get('input[type=email]').type('admin@gmail.com') // input email "admin@gmail.com"
         cy.get('input[type=password]').type('admin124') // input password "admin124"
         cy.get('.fi-btn').click() // klik tombol Sign in
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('These credentials do not match our records.', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "These credentials do not match our records." memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna, menentukan bahwa Cypress harus menunggu hingga 30.000 milidetik (30 detik) agar elemen dengan teks 'These credentials do not match our records.' muncul
         cy.url().should('contain', '/login') // assert harus masih di halaman login
         cy.wait(5000) // menunggu selama 5 detik
       })

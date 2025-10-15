@@ -35,20 +35,19 @@ describe('category', () => {
       cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.get('input[id="data.name"]').type('Dance') // input Name "Dance"
       cy.get('.fi-color-custom').click() // klik tombol Create
-      cy.wait(10000) // menunggu selama 10 detik
+      cy.contains('Created', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Created" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
       cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Class Master Main Categories
       cy.contains('Categories') // mencari elemen yang berisi teks "Categories" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.wait(5000) // menunggu selama 5 detik
 
       // edit class master main category
       cy.get(':nth-child(2) > .fi-input-wrp > .min-w-0 > .fi-select-input').select('All') // pilih Per page "All"
-      cy.wait(10000) // menunggu selama 10 detik
-      cy.contains('Dance').should('be.visible') // mencari elemen yang berisi teks "Dance" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.contains('Dance', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Dance" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.get(':nth-child(20) > :nth-child(3) > .whitespace-nowrap > .fi-ta-actions > a.fi-link > .fi-link-icon').click() // klik Edit pada category "Dance"
       cy.contains('Edit') // mencari elemen yang berisi teks "Edit"
       cy.get('input[id="data.name"]').clear().type("DANCE") // ubah Name dari "Dance" menjadi "DANCE"
       cy.get('.fi-form-actions > .fi-ac > .fi-color-custom').click() // klik tombol Save changes
-      cy.wait(10000) // menunggu selama 10 detik
+      cy.contains('Saved', { timeout: 50000 }).should('be.visible') // mencari elemen yang berisi teks "Saved" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 50 detik
       cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // Class Master Main Categories
       cy.contains('Categories') // mencari elemen yang berisi teks "Categories" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.wait(5000) // menunggu selama 5 detik
@@ -61,9 +60,8 @@ describe('category', () => {
 
       // create class master sub category berdasarkan default
       cy.get('.fi-ta-actions > .fi-btn').click() // klik tombol New class master sub category
-      cy.wait(20000) // menunggu selama 20 detik
-      cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
-      cy.get('.fi-modal-footer-actions > .fi-color-custom', { timeout: 10000 }).click() // klik tombol Create
+      cy.contains('Create', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.get('.fi-modal-footer-actions > .fi-color-custom', { timeout: 30000 }).click() // klik tombol Create
       cy.wait(5000) // menunggu selama 5 detik
       cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.wait(5000) // menunggu selama 5 detik
@@ -71,42 +69,39 @@ describe('category', () => {
       // create class master sub category
       cy.get('input[id="mountedTableActionsData.0.name"]').type('Traditional Dance') // input Name "Traditional Dance"
       cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Create
-      cy.wait(10000) // menunggu selama 10 detik
+      cy.contains('Created', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Created" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
       cy.contains('Traditional Dance', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Traditional Dance" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.wait(5000) // menunggu selama 5 detik
 
       // edit class master sub category
       cy.get(':nth-child(1) > :nth-child(3) > .whitespace-nowrap > .fi-ta-actions > :nth-child(1)').click() // klik Edit pada sub category "Traditional Dance"
-      cy.wait(20000) // menunggu selama 20 detik
-      cy.contains('Edit').should('be.visible') // mencari elemen yang berisi teks "Edit" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.contains('Edit Traditional Dance', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Edit Traditional Dance" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.get('input[id="mountedTableActionsData.0.name"]').clear().type('Modern Dance') // ubah Name dari "Traditional Dance" menjadi "Modern Dance"
       cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Save changes
-      cy.wait(10000) // menunggu selama 10 detik
+      cy.contains('Saved', { timeout: 50000 }).should('be.visible') // mencari elemen yang berisi teks "Saved" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 50 detik
       cy.contains('Modern Dance', { timeout: 10000 }).should('be.visible') // mencari elemen yang berisi teks "Modern Dance" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.wait(5000) // menunggu selama 5 detik
 
       // delete class master sub category
       cy.get('.fi-ta-actions > :nth-child(2)').click() // klik Delete pada sub category "Modern Dance"
-      cy.wait(10000) // menunggu selama 10 detik
-      cy.contains('Delete').should('be.visible') // mencari elemen yang berisi teks "Delete" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.contains('Are you sure you would like to do this?', { timeout: 30000 }) // mencari elemen yang berisi teks "Are you sure you would like to do this?" 
       cy.get('.fi-modal-footer-actions > .fi-color-custom', { timeout: 10000 }).click() // klik tombol Confirm
-      cy.wait(10000) // menunggu selama 10 detik
-      cy.contains('Modern Dance', { timeout: 10000 }).should('not.exist') // memastikan tidak ada elemen yang mengandung teks "Modern Dance"
+      cy.contains('Deleted', { timeout: 50000 }).should('be.visible') // mencari elemen yang berisi teks "Deleted" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 50 detik
+      cy.contains('Modern Dance', { timeout: 30000 }).should('not.exist') // memastikan tidak ada elemen yang mengandung teks "Modern Dance"
       cy.wait(5000) // menunggu selama 5 detik
 
       // delete class master main category
       cy.get('.fi-header > .fi-ac > .fi-btn').click() // klik tombol Delete pada category DANCE
-      cy.wait(10000) // menunggu selama 10 detik
-      cy.contains('Delete').should('be.visible') // mencari elemen yang berisi teks "Delete" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.contains('Are you sure you would like to do this?', { timeout: 30000 }) // mencari elemen yang berisi teks "Are you sure you would like to do this?" 
       cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm
-      cy.wait(15000) // menunggu selama 15 detik
-      cy.contains('DANCE', { timeout: 20000 }).should('not.exist') // memastikan tidak ada elemen yang mengandung teks "DANCE"
+      cy.contains('Deleted', { timeout: 50000 }).should('be.visible') // mencari elemen yang berisi teks "Deleted" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 50 detik
+      cy.contains('DANCE', { timeout: 30000 }).should('not.exist') // memastikan tidak ada elemen yang mengandung teks "DANCE"
       cy.wait(5000) // menunggu selama 5 detik
 
       // cari main category berdasarkan apa yang admin input1
       cy.get('input[id="input-1"]').type('sports') // input Search "sports"
       cy.wait(10000) // menunggu selama 10 detik
-      cy.contains('Sports', { timeout: 20000 }).should('be.visible') // mencari elemen yang berisi teks "Sports" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.contains('Sports').should('be.visible') // mencari elemen yang berisi teks "Sports" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.wait(5000) // menunggu selama 5 detik
 
       // cari main category berdasarkan apa yang admin input2

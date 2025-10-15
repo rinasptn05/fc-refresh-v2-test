@@ -39,12 +39,12 @@ describe('campaign tag detail', () => {
 
     const filePath = 'campaign.jpg' // path relatif dari file di dalam folder fixtures
     cy.get('input[type="file"]').attachFile(filePath) // pilih input file / klik Browse dan lampirkan file
-    cy.wait(30000) // menunggu selama 30 detik
+    cy.contains('Upload complete', { timeout: 100000 }) // mencari elemen yang berisi teks "Upload complete"
 
     cy.get('select[id="data.status"]').select('Active') // pilih Status "Active"
-    cy.wait(5000) // menunggu selama 5 detik
+    cy.wait(1000) // menunggu selama 1 detik
     cy.get('.fi-color-custom').click() // klik tombol Create
-    cy.wait(10000) // menunggu selama 10 detik
+    cy.contains('Created', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Created" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
     
     cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Class Master Campaign Tag Details
     cy.contains('Details').should('be.visible') // mencari elemen yang berisi teks "Details" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
@@ -55,10 +55,10 @@ describe('campaign tag detail', () => {
     cy.get('.fi-ta-actions > .fi-link').click() // klik Edit pada Campaign Tag Name "Promotion"
     cy.contains('Edit').should('be.visible') // mencari elemen yang berisi teks "Edit" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
     cy.get('textarea[id="data.description"]').clear().type('Campaign Tag Name : Promotion') // ubah Deskripsi dari "Campaign Tag : Promotion" menjadi "Campaign Tag Name : Promotion"
-    cy.wait(5000) // menunggu selama 5 detik
+    cy.wait(10000) // menunggu selama 10 detik
 
     cy.get('.fi-form-actions > .fi-ac > .fi-color-custom').click() // klik tombol Save changes
-    cy.wait(10000) // menunggu selama 10 detik
+    cy.contains('Saved', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Saved" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
     cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Class Master Campaign Tag Details
     cy.contains('Details').should('be.visible') // mencari elemen yang berisi teks "Details" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
     cy.wait(5000) // menunggu selama 5 detik
@@ -68,11 +68,10 @@ describe('campaign tag detail', () => {
     cy.contains('Edit').should('be.visible') // mencari elemen yang berisi teks "Edit" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
     cy.wait(5000) // menunggu selama 5 detik
     cy.get('.fi-header > .fi-ac > .fi-btn').click() // klik tombol Delete
-    cy.wait(10000) // menunggu selama 10 detik
+    cy.contains('Are you sure you would like to do this?', { timeout: 30000 }) // mencari elemen yang berisi teks "Are you sure you would like to do this?" 
     cy.contains('Delete').should('be.visible') // mencari elemen yang berisi teks "Delete" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
     cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm
-    cy.wait(10000) // menunggu selama 10 detik
+    cy.contains('Deleted', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Deleted" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
     cy.contains('Promotion').should('not.exist') // memastikan tidak ada elemen yang mengandung teks "Promotion"
-    cy.wait(5000) // menunggu selama 5 detik
   })
 })

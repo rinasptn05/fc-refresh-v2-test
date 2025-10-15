@@ -36,20 +36,19 @@ describe('class master sub categories', () => {
         cy.get('select[id="data.main_category_id"]').select('Social Skills') // pilih Main Category "Social Skills"
         cy.get('input[id="data.name"]').type('STEAM 2') // input Name "STEAM 2"
         cy.get('.fi-color-custom').click() // klik tombol Create
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Created', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Created" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik tombol Class Master Sub Categories
         cy.contains('Sub Categories') // mencari elemen yang berisi teks "Sub Categories"
         cy.wait(5000) // menunggu selama 5 detik
 
         // edit class master sub category
         cy.get(':nth-child(2) > .fi-input-wrp > .min-w-0 > .fi-select-input').select('All') // pilih Per page "All"
-        cy.wait(10000) // menunggu selama 10 detik
-        cy.contains('STEAM 2') // mencari elemen yang berisi teks "STEAM 2"
+        cy.contains('STEAM 2', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "STEAM 2" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(44) > :nth-child(4) > .whitespace-nowrap > .fi-ta-actions > a.fi-link > .fi-link-icon').click() // klik Edit pada Sub Category Name "STEAM 2"
         cy.contains('Edit') // mencari elemen yang berisi teks "Edit"
         cy.get('input[id="data.name"]').clear().type('STEAM 3') // ubah Name dari "STEAM 2" menjadi "STEAM 3"
         cy.get('.fi-form-actions > .fi-ac > .fi-color-custom').click() // klik tombol Save Changes
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Saved', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Saved" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik tombol Class Master Sub Categories
         cy.contains('Sub Categories') // mencari elemen yang berisi teks "Sub Categories"
         cy.wait(5000) // menunggu selama 5 detik
@@ -57,11 +56,9 @@ describe('class master sub categories', () => {
         // delete class master sub category
         cy.contains('STEAM 3') // mencari elemen yang berisi teks "STEAM 3"
         cy.get(':nth-child(44) > :nth-child(4) > .whitespace-nowrap > .fi-ta-actions > button.fi-link > [viewBox="0 0 20 20"]').click() // klik Un Assign pada Sub Category Name "STEAM 3"
-        cy.wait(15000) // menunggu selama 15 detik
-        cy.contains('Delete') // mencari elemen yang berisi teks "Delete"
+        cy.contains('Are you sure you would like to do this?', { timeout: 30000 }) // mencari elemen yang berisi teks "Are you sure you would like to do this?"
         cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm
-        cy.wait(10000) // menunggu selama 10 detik
-        cy.contains('STEAM 3').should('not.exist') // memastikan tidak ada elemen yang mengandung teks "STEAM 3"
-        cy.wait(5000) // menunggu selama 5 detik
+        cy.contains('Deleted', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Deleted" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
+        cy.contains('STEAM 3', { timeout: 30000 }).should('not.exist') // memastikan tidak ada elemen yang mengandung teks "STEAM 3"
     })
 })

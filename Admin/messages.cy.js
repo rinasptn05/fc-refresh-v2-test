@@ -10,9 +10,8 @@ describe('messages', () => {
 
     it('list message history', () => {
         cy.get('.fi-sidebar-group-items > :nth-child(2) > .fi-sidebar-item-button', { timeout: 10000 }).contains('Messages').click() // klik menu Messages
-        cy.wait(15000) // menunggu selama 15 detik
         cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
-        cy.contains('History').should('be.visible') // mencari elemen yang berisi teks "History" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('History', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "History" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.contains('No messages').should('be.visible') // mencari elemen yang berisi teks "No messages" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
     })
@@ -21,7 +20,7 @@ describe('messages', () => {
         cy.get('.fi-sidebar-group-items > :nth-child(2) > .fi-sidebar-item-button', { timeout: 10000 }).contains('Messages').click() // klik menu Messages
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('.fi-ac > .fi-color-custom').click() // klik tombol Create
-        cy.wait(15000) // menunggu selama 15 detik
+        cy.contains('The message field is required.', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "The message field is required." memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
     })
@@ -31,7 +30,7 @@ describe('messages', () => {
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('.fi-tabs > :nth-child(2)').click() // klik tab Send Public Message
         cy.get('.fi-ac > .fi-color-custom').click() // klik tombol Create
-        cy.wait(15000) // menunggu selama 15 detik
+        cy.contains('The message field is required.', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "The message field is required." memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.contains('Create').should('be.visible') // mencari elemen yang berisi teks "Create" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
     })
@@ -43,7 +42,7 @@ describe('messages', () => {
         cy.get('select[id="data.user_id"]').select('admin@gmail.com') // pilih Message assign to user "admin@gmail.com"
         cy.get('textarea[id="data.message"]').eq(0).type('Hello') // input Message "Hello"
         cy.get('.fi-ac > .fi-color-custom').click() // klik tombol Create
-        cy.wait(20000) // menunggu selama 20 detik
+        cy.contains('Created', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Created" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Messages
         cy.wait(10000) // menunggu selama 10 detik
         cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
@@ -55,7 +54,7 @@ describe('messages', () => {
         cy.get(':nth-child(2) > .fi-tabs-item-label').click() // klik tab Send Public Message
         cy.get('textarea[id="data.message"]').eq(1).type('Test') // input Message "Test"
         cy.get('.fi-ac > .fi-color-custom').click() // klik tombol Create
-        cy.wait(20000) // menunggu selama 20 detik
+        cy.contains('Created', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Created" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Messages
         cy.wait(10000) // menunggu selama 10 detik
         cy.scrollTo(0, 1200) // scroll ke bawah sebanyak 1200px
@@ -69,31 +68,27 @@ describe('messages', () => {
         cy.contains('Edit').should('be.visible') // mencari elemen yang berisi teks "Edit" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('textarea[id="mountedTableActionsData.0.message"]').clear().type('Test 123') // ubah Message dari "Test" menjadi "Test 123"
         cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Save changes
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Saved', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Saved" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.contains('Test 123').should('be.visible') // mencari elemen yang berisi teks "Test 123" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
 
         // cari message history berdasarkan apa yang admin input1
         cy.get('input[id="input-1"]').type('abc') // input Search "abc"
-        cy.wait(10000) // menunggu selama 10 detik
-        cy.contains('No messages').should('be.visible') // mencari elemen yang berisi teks "No messages" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('No messages', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "No messages" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
 
         // cari message history berdasarkan apa yang admin input2
         cy.get('input[id="input-1"]').clear().type('hello') // input Search "hello"
-        cy.wait(10000) // menunggu selama 10 detik
-        cy.contains('Hello').should('be.visible') // mencari elemen yang berisi teks "Hello" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('Hello', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Hello" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
         cy.get('input[id="input-1"]').clear() // hapus "hello" pada Search
         cy.wait(10000) // menunggu selama 10 detik
 
         // delete message history
         cy.get(':nth-child(2) > :nth-child(5) > .whitespace-nowrap > .fi-ta-actions > :nth-child(2)').click() // klik Delete pada Message "Test 123"
-        cy.wait(10000) // menunggu selama 10 detik
-        cy.contains('Delete') // mencari elemen yang berisi teks "Delete"
+        cy.contains('Are you sure you would like to do this?', { timeout: 30000 }) // mencari elemen yang berisi teks "Are you sure you would like to do this?" 
         cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm 
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Deleted', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Deleted" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.contains('Test 123').should('not.exist') // memastikan tidak ada elemen yang mengandung teks "Test 123"
-        cy.wait(5000) // menunggu selama 5 detik
     })
 })

@@ -30,7 +30,7 @@ describe('list entries', () => {
         cy.get('div[id="choices--dataentry_type_id-item-choice-5"]').click() // ubah Entry Type dari "Workshop" menjadi "Trial Class"
         cy.get('trix-editor[id="data.description"]').clear().type('Description') // ubah Description dari "desc" menjadi "Description"
         cy.get('.fi-form-actions > .fi-ac > .fi-color-custom').click() // klik tombol Save changes
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Saved', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Saved" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Class Basic Informations
         cy.contains('Informations') // mencari elemen yang berisi teks "Informations"
         cy.contains('Trial Class').should('be.visible') // mencari elemen yang berisi teks "Trial Class" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
@@ -125,14 +125,12 @@ describe('list entries', () => {
 
         // cari entry berdasarkan apa yang admin input1
         cy.get('input[id="input-1"]').type('abc') // input Search "abc"
-        cy.wait(10000) // menunggu selama 10 detik
-        cy.contains('No class basic informations').should('be.visible') // mencari elemen yang berisi teks "No class basic informations" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('No class basic informations', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "No class basic informations" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
 
         // cari entry berdasarkan apa yang admin input2
         cy.get('input[id="input-1"]').clear().type('soccer') // input Search "soccer"
-        cy.wait(10000) // menunggu selama 10 detik
-        cy.contains('Soccer').should('be.visible') // mencari elemen yang berisi teks "Soccer" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('Soccer', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Soccer" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
 
         // delete entry
@@ -148,14 +146,12 @@ describe('list entries', () => {
             cy.log('Tombol Confirm belum muncul, klik ulang tombol') // tombol belum muncul, klik ulang tombol Delete
             cy.get(':nth-child(2) > .fi-modal > .z-40 > .fi-modal-close-overlay').click()
             cy.get('.fi-header > .fi-ac > .fi-btn').click() // klik tombol Delete
-            cy.wait(10000) // menunggu selama 10 detik
+            cy.contains('Are you sure you would like to do this?', { timeout: 30000 }) // mencari elemen yang berisi teks "Are you sure you would like to do this?" 
           }
         })
-        
-        cy.contains('Delete') // mencari elemen yang berisi teks "Delete"        
+                
         cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Deleted', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Deleted" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.contains('submitted').should('not.exist') // memastikan tidak ada elemen yang mengandung teks "submitted"
-        cy.wait(5000) // menunggu selama 5 detik
     })
 })
