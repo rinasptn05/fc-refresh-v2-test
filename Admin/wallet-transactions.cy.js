@@ -16,7 +16,7 @@ describe('wallet transactions', () => {
         cy.get('input[id="data.amount"]').type('100') // input Amount "100"
         cy.get('input[id="data.reason"]').type('Top up') // input Reason "Top up"
         cy.get('.fi-color-custom').click() // klik tombol Create
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Created', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Created" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Customer Wallet Transactions
         cy.contains('Wallet') // mencari elemen yang berisi teks "Wallet"
         cy.wait(5000) // menunggu selama 5 detik
@@ -24,7 +24,7 @@ describe('wallet transactions', () => {
         cy.get('div[class="choices__inner"]').click() // klik menu dropdown pada Customer Email
         cy.wait(10000) // menunggu selama 10 detik
         cy.get('div[id="choices--tableFilterscustomercustomer-item-choice-1"]').click() // pilih Customer Email "customer@gmail.com"
-        cy.contains('Top up', { timeout: 20000 }).should('be.visible') // mencari elemen yang berisi teks "Top up" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('Top up', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Top up" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
     })
 
@@ -34,10 +34,9 @@ describe('wallet transactions', () => {
         cy.get('[x-show="login"] > :nth-child(1) > .fixed > .max-w-lg > :nth-child(1) > :nth-child(2) > .p-4 > .space-y-6 > :nth-child(1) > #floating_email').type('customer@gmail.com') // input Email "customer@gmail.com"
         cy.get(':nth-child(2) > #floating_email').type('customer123') // input Password "customer123"
         cy.get('button[class="w-full disabled:bg-abu disabled:hover:cursor-not-allowed disabled:text-black text-white bg-danger hover:bg-semi-danger focus:ring-4 focus:outline-none focus:ring-danger font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-danger dark:hover:bg-danger dark:focus:ring-danger transition duration-500"]').contains('Log In').click() // klik tombol Log In
-        cy.wait(10000) // menunggu selama 10 detik
-        cy.contains('Dashboard').should('be.visible') // mencari elemen yang berisi teks "Dashboard" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('Dashboard', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Dashboard" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
-        cy.get('.px-16').contains('100100') // memastikan wallet di dashboard ada "100100" (bertambah)
+        cy.get('.px-16').contains('100100').should('be.visible') // memastikan wallet di dashboard ada "100100" (bertambah)
         cy.wait(5000) // menunggu selama 5 detik
     })
 
@@ -53,11 +52,11 @@ describe('wallet transactions', () => {
         cy.get('.fi-ac > .fi-btn').click() // klik tombol New customer wallet transaction
         cy.contains('Create') // mencari elemen yang berisi teks "Create"
         cy.get('input[id="data.email"]').type('customer@gmail.com') // input Customer Email "customer@gmail.com"
-        cy.get('select[id="data.action"]').select('Substract') // pilih Action "substract"
+        cy.get('select[id="data.action"]').select('Substract') // pilih Action "Substract"
         cy.get('input[id="data.amount"]').type('50') // input Amount "50"
         cy.get('input[id="data.reason"]').type('Beli produk') // input Reason "Beli produk"
         cy.get('.fi-color-custom').click() // klik tombol Create
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.contains('Created', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Created" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Customer Wallet Transactions
         cy.contains('Wallet') // mencari elemen yang berisi teks "Wallet"
         cy.wait(5000) // menunggu selama 5 detik
@@ -65,7 +64,7 @@ describe('wallet transactions', () => {
         cy.get('div[class="choices__inner"]').click() // klik menu dropdown pada Customer Email
         cy.wait(10000) // menunggu selama 10 detik
         cy.get('div[id="choices--tableFilterscustomercustomer-item-choice-1"]').click() // pilih Customer Email "customer@gmail.com"
-        cy.contains('Beli produk', { timeout: 20000 }).should('be.visible') // mencari elemen yang berisi teks "Beli produk" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('Beli produk', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Beli produk" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
     })
 
@@ -75,10 +74,9 @@ describe('wallet transactions', () => {
         cy.get('[x-show="login"] > :nth-child(1) > .fixed > .max-w-lg > :nth-child(1) > :nth-child(2) > .p-4 > .space-y-6 > :nth-child(1) > #floating_email').type('customer@gmail.com') // input Email "customer@gmail.com"
         cy.get(':nth-child(2) > #floating_email').type('customer123') // input Password "customer123"
         cy.get('button[class="w-full disabled:bg-abu disabled:hover:cursor-not-allowed disabled:text-black text-white bg-danger hover:bg-semi-danger focus:ring-4 focus:outline-none focus:ring-danger font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-danger dark:hover:bg-danger dark:focus:ring-danger transition duration-500"]').contains('Log In').click() // klik tombol Log In
-        cy.wait(10000) // menunggu selama 10 detik
-        cy.contains('Dashboard').should('be.visible') // mencari elemen yang berisi teks "Dashboard" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('Dashboard', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Dashboard" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
-        cy.get('.px-16').contains('100050') // memastikan wallet di dashboard ada "100050" (berkurang)
+        cy.get('.px-16').contains('100050').should('be.visible') // memastikan wallet di dashboard ada "100050" (berkurang)
         cy.wait(5000) // menunggu selama 5 detik
     })
 })

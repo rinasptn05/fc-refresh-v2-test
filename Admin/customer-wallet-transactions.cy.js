@@ -48,7 +48,7 @@ describe('customer wallet transactions', () => {
       cy.get('input[id="data.email"]').type('customer@gmail.com') // input Customer Email "customer@gmail.com"
       cy.get('select[id="data.action"]').select('Substract') // pilih Action "Substract"
       cy.get('input[id="data.amount"]').type('50') // input Amount "50"
-      cy.get('input[id="data.reason"]').type('Buy product') // input Reason "Buy product"
+      cy.get('input[id="data.reason"]').type('Beli produk') // input Reason "Beli produk"
       cy.get('.fi-color-custom').click() // klik tombol Create
       cy.contains('Created', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Created" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
       cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Customer Wallet Transactions
