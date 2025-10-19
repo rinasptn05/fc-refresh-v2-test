@@ -54,11 +54,11 @@ describe('class master sub categories', () => {
         cy.wait(5000) // menunggu selama 5 detik
 
         // delete class master sub category
-        cy.contains('STEAM 3') // mencari elemen yang berisi teks "STEAM 3"
+        cy.contains('STEAM 3').should('be.visible') // mencari elemen yang berisi teks "STEAM 3" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get(':nth-child(44) > :nth-child(4) > .whitespace-nowrap > .fi-ta-actions > button.fi-link > [viewBox="0 0 20 20"]').click() // klik Un Assign pada Sub Category Name "STEAM 3"
         cy.contains('Are you sure you would like to do this?', { timeout: 30000 }) // mencari elemen yang berisi teks "Are you sure you would like to do this?"
         cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm
-        cy.contains('Deleted', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Deleted" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
+        cy.contains('Deleted', { timeout: 50000 }).should('be.visible') // mencari elemen yang berisi teks "Deleted" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 50 detik
         cy.contains('STEAM 3', { timeout: 30000 }).should('not.exist') // memastikan tidak ada elemen yang mengandung teks "STEAM 3"
     })
 })

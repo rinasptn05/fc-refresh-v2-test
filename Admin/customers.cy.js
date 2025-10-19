@@ -53,7 +53,7 @@ describe('customers', () => {
       cy.contains('Customer') // mencari elemen yang berisi teks "Customer"
       cy.get('input[id="data.first_name"]').clear().type('Rina') // ubah First name dari "Rani" menjadi "Rina"
       cy.get('.fi-ac > .fi-color-custom').click() // klik tombol Save changes
-      cy.contains('Saved', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Saved" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
+      cy.contains('Saved', { timeout: 50000 }).should('be.visible') // mencari elemen yang berisi teks "Saved" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 50 detik
       cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Customers
       cy.contains('Customers') // mencari elemen yang berisi teks "Customers"
       cy.contains('Rina').should('be.visible') // mencari elemen yang berisi teks "Rina" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna

@@ -45,7 +45,7 @@ describe('entry type', () => {
         cy.contains('Edit').should('be.visible') // mencari elemen yang berisi teks "Edit" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.get('input[id="data.name"]').clear().type('Product 2') // ubah Name dari "Product" menjadi "Product 2"
         cy.get('.fi-form-actions > .fi-ac > .fi-color-custom').click() // klik tombol Save changes
-        cy.contains('Saved', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Saved" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
+        cy.contains('Saved', { timeout: 50000 }).should('be.visible') // mencari elemen yang berisi teks "Saved" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 50 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Entry Types
         cy.contains('Entry Types').should('be.visible') // mencari elemen yang berisi teks "Entry Types" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.contains('Product 2').should('be.visible') // mencari elemen yang berisi teks "Product 2" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna

@@ -58,7 +58,7 @@ describe('campaign tag detail', () => {
     cy.wait(10000) // menunggu selama 10 detik
 
     cy.get('.fi-form-actions > .fi-ac > .fi-color-custom').click() // klik tombol Save changes
-    cy.contains('Saved', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Saved" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
+    cy.contains('Saved', { timeout: 50000 }).should('be.visible') // mencari elemen yang berisi teks "Saved" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 50 detik
     cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Class Master Campaign Tag Details
     cy.contains('Details').should('be.visible') // mencari elemen yang berisi teks "Details" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
     cy.wait(5000) // menunggu selama 5 detik

@@ -60,7 +60,7 @@ describe('customer wallet transactions', () => {
       cy.wait(10000) // menunggu selama 10 detik
       cy.get('div[id="choices--tableFilterscustomercustomer-item-choice-1"]').click() // pilih Customer Email "customer@gmail.com"
       cy.contains('Top up', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Top up" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
-      cy.contains('Buy product').should('be.visible') // mencari elemen yang berisi teks "Buy product" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.contains('Beli produk').should('be.visible') // mencari elemen yang berisi teks "Beli produk" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.contains('customer@gmail.com') // mencari elemen yang berisi teks "customer@gmail.com"
       cy.wait(5000) // menunggu selama 5 detik
 

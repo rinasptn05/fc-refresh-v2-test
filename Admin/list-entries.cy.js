@@ -24,7 +24,7 @@ describe('list entries', () => {
 
         const filePath = 'entry.jpg' // path relatif dari file di dalam folder fixtures
         cy.get('input[type="file"]').attachFile(filePath) // pilih input file / klik Browse dan lampirkan file
-        cy.wait(30000) // menunggu selama 30 detik
+        cy.contains('Upload complete', { timeout: 100000 }) // mencari elemen yang berisi teks "Upload complete"
         cy.get('div[class="choices__inner"]').eq(0).click() // klik dropdown pada Entry Type
         cy.wait(10000) // menunggu selama 10 detik
         cy.get('div[id="choices--dataentry_type_id-item-choice-5"]').click() // ubah Entry Type dari "Workshop" menjadi "Trial Class"
@@ -110,7 +110,7 @@ describe('list entries', () => {
         cy.wait(10000) // menunggu selama 10 detik
         cy.get('div[id="choices--tableFilterspartnervalue-item-choice-1"]').click() // pilih filter Partner "PT Kunci"
         cy.get('div[class="choices__inner"]').eq(1).click() // klik menu dropdown pada Entry type
-        cy.wait(10000) // menunggu selama 10 detik
+        cy.wait(15000) // menunggu selama 15 detik
         cy.get('div[id="choices--tableFiltersentryTypevalue-item-choice-5"]').click({force: true}) // pilih filter Entry type "Trial Class"
         cy.get('select[id="tableFilters.status.value"]').select('Published', {force: true}) // pilih filter Status "Published"
         cy.wait(10000) // menunggu selama 10 detik
