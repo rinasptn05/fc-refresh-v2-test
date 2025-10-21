@@ -48,7 +48,7 @@ describe('customer wallet transactions', () => {
       cy.get('input[id="data.email"]').type('customer@gmail.com') // input Customer Email "customer@gmail.com"
       cy.get('select[id="data.action"]').select('Substract') // pilih Action "Substract"
       cy.get('input[id="data.amount"]').type('50') // input Amount "50"
-      cy.get('input[id="data.reason"]').type('Beli produk') // input Reason "Beli produk"
+      cy.get('input[id="data.reason"]').type('Buy class') // input Reason "Buy class"
       cy.get('.fi-color-custom').click() // klik tombol Create
       cy.contains('Created', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Created" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
       cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Customer Wallet Transactions
@@ -60,7 +60,7 @@ describe('customer wallet transactions', () => {
       cy.wait(10000) // menunggu selama 10 detik
       cy.get('div[id="choices--tableFilterscustomercustomer-item-choice-1"]').click() // pilih Customer Email "customer@gmail.com"
       cy.contains('Top up', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Top up" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
-      cy.contains('Beli produk').should('be.visible') // mencari elemen yang berisi teks "Beli produk" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+      cy.contains('Buy class').should('be.visible') // mencari elemen yang berisi teks "Buy class" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
       cy.contains('customer@gmail.com') // mencari elemen yang berisi teks "customer@gmail.com"
       cy.wait(5000) // menunggu selama 5 detik
 
@@ -91,7 +91,7 @@ describe('customer wallet transactions', () => {
       cy.contains('Are you sure you would like to do this?', { timeout: 30000 }) // mencari elemen yang berisi teks "Are you sure you would like to do this?" 
       cy.get('.fi-modal-footer-actions > .fi-color-custom').click() // klik tombol Confirm
       cy.contains('Deleted', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Deleted" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
-      cy.contains('Buy product').should('not.exist') // memastikan tidak ada elemen yang mengandung teks "Buy product"
+      cy.contains('Buy class').should('not.exist') // memastikan tidak ada elemen yang mengandung teks "Buy class"
       cy.wait(5000) // menunggu selama 5 detik
       cy.get('.fi-ta-filters > :nth-child(1) > .fi-link > .font-semibold').click() // klik Reset
       cy.wait(10000) // menunggu selama 10 detik

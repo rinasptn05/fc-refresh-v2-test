@@ -18,7 +18,7 @@ describe('booking report by entry', () => {
 
     it('search booking report by entry berdasarkan filters', () => {
         // Query INSERT untuk menambahkan data ke tabel 'books'
-        const query = `INSERT INTO books (book_ref_no, child_id, package_id, class_id, created_at, updated_at, class_schedule_id) VALUES ('FLCP000001', '1', '1', '1', '2024-10-25', '2024-10-25', '1')`
+        const query = `INSERT INTO books (book_ref_no, child_id, package_id, class_id, created_at, updated_at, class_schedule_id) VALUES ('FLCP000001', '1', '1', '1', '2025-11-20', '2025-11-20', '1')`
         
         // Memanggil task Cypress bernama queryDatabase yang menjalankan query SQL di database, variabel query berisi perintah SQL yang akan dieksekusi
         // Setelah task selesai, fungsi callback menerima hasil eksekusi query dalam variabel result

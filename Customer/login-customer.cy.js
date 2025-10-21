@@ -2,6 +2,7 @@ describe('login customer', () => {
     beforeEach(() => {
         cy.exec('cd C:/xampp/htdocs/FlyingCape-Refreshv2-API && php artisan testseed')
         cy.visit('http://127.0.0.1:8000/') // mengunjungi web home flying cape
+        cy.contains('Home').should('be.visible') // mencari elemen yang berisi teks "Home" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
     })
 
     it('login gagal', () => {

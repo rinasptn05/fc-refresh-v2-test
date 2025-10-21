@@ -40,7 +40,7 @@ describe('wallet transactions', () => {
         cy.wait(5000) // menunggu selama 5 detik
     })
 
-    it('create customer wallet transaction - substract (beli produk)', () => {
+    it('create customer wallet transaction - substract (buy class)', () => {
         cy.visit('http://127.0.0.1:8000/admin') // mengunjungi web admin
         cy.get('input[type=email]').type('admin@gmail.com') // input email "admin@gmail.com"
         cy.get('input[type=password]').type('admin123') // input password "admin123"
@@ -54,7 +54,7 @@ describe('wallet transactions', () => {
         cy.get('input[id="data.email"]').type('customer@gmail.com') // input Customer Email "customer@gmail.com"
         cy.get('select[id="data.action"]').select('Substract') // pilih Action "Substract"
         cy.get('input[id="data.amount"]').type('50') // input Amount "50"
-        cy.get('input[id="data.reason"]').type('Beli produk') // input Reason "Beli produk"
+        cy.get('input[id="data.reason"]').type('Buy class') // input Reason "Buy class"
         cy.get('.fi-color-custom').click() // klik tombol Create
         cy.contains('Created', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Created" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna selama maksimal 30 detik
         cy.get(':nth-child(1) > .fi-breadcrumbs-item-label').click() // klik Customer Wallet Transactions
@@ -64,7 +64,7 @@ describe('wallet transactions', () => {
         cy.get('div[class="choices__inner"]').click() // klik menu dropdown pada Customer Email
         cy.wait(10000) // menunggu selama 10 detik
         cy.get('div[id="choices--tableFilterscustomercustomer-item-choice-1"]').click() // pilih Customer Email "customer@gmail.com"
-        cy.contains('Beli produk', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Beli produk" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
+        cy.contains('Buy class', { timeout: 30000 }).should('be.visible') // mencari elemen yang berisi teks "Buy class" memastikan bahwa elemen tersebut ada di halaman web dan dapat dilihat oleh pengguna
         cy.wait(5000) // menunggu selama 5 detik
     })
 
